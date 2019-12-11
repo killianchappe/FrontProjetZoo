@@ -10,18 +10,6 @@
                                 <div class="ripple-container"></div>
                             </a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link" [routerLink]="['/zoo']" data-toggle="tab">
-                                <i class="material-icons">photo</i> Enclos
-                                <div class="ripple-container"></div>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" [routerLink]="['/zoo']" data-toggle="tab">
-                                <i class="material-icons">pets</i> Animaux
-                                <div class="ripple-container"></div>
-                            </a>
-                        </li>
                     </ul>
                 </div>
             </div>
@@ -36,7 +24,7 @@
                                     <ul class="nav nav-tabs" data-tabs="tabs">
                                         <li class="nav-item">
                                             <a class="nav-link" [routerLink]="['/zoo']" data-toggle="tab">
-                                                <i class="material-icons">landscape</i> Liste des secteurs
+                                                <i class="material-icons">reply</i>
                                                 <div class="ripple-container"></div>
                                             </a>
                                         </li>
@@ -73,7 +61,7 @@
                                                     <button type="submit" class="btn btn-success"
                                                         [disabled]="myForm.invalid">Modifier</button>
                                                     <button type="button" (click)="onReset()"
-                                                        class="btn btn-danger">Réinitialiser</button>
+                                                        class="btn btn-warning">Réinitialiser</button>
                                                 </form>
                                             </div>
                                             <div class="col-sm-3">

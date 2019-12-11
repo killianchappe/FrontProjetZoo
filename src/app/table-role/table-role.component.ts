@@ -86,18 +86,16 @@ export class TableRoleComponent implements OnInit {
   }
 
   passerManager(user: User, id: number) {
-    console.log('test');
     user.roleUser.idRole = 2;
     this.userService.updateUser(user, id).subscribe(res => {
       if (res) {
         Swal.fire({
           title: 'Modification effectuée!',
           icon: 'success',
-          showCancelButton: true,
-          showCloseButton: true,
+          showCancelButton: false,
+          showCloseButton: false,
           focusConfirm: true,
-          confirmButtonText: 'Voir la liste',
-          cancelButtonText: 'Modifier à nouveau'
+          confirmButtonText: 'OK',
         }).then((result) => {
           if (result.value) {
             this.ngOnInit();
@@ -114,11 +112,10 @@ export class TableRoleComponent implements OnInit {
         Swal.fire({
           title: 'Modification effectuée!',
           icon: 'success',
-          showCancelButton: true,
-          showCloseButton: true,
+          showCancelButton: false,
+          showCloseButton: false,
           focusConfirm: true,
-          confirmButtonText: 'Voir la liste',
-          cancelButtonText: 'Modifier à nouveau'
+          confirmButtonText: 'OK',
         }).then((result) => {
           if (result.value) {
             this.ngOnInit();

@@ -10,6 +10,12 @@
                                 <div class="ripple-container"></div>
                             </a>
                         </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#ajout-employe" data-toggle="tab">
+                                <i class="material-icons">person_add</i> Embaucher un employé
+                                <div class="ripple-container"></div>
+                            </a>
+                        </li>
                     </ul>
                 </div>
             </div>
@@ -50,8 +56,9 @@
                                                 <td>{{employe.emailUser}}</td>
                                                 <td>{{employe.secteurUser.nomSecteur}}</td>
                                                 <td>{{employe.roleUser.libelleRole}}</td>
-                                                <td><button type="button" class="btn btn-success"><i
-                                                            class="material-icons">autorenew</i>
+                                                <td><button type="button"
+                                                        [routerLink]="['/updateemploye',employe.idUser]"
+                                                        class="btn btn-success"><i class="material-icons">autorenew</i>
                                                         Modifier</button>
                                                 </td>
                                                 <td>
@@ -70,6 +77,9 @@
                             </div>
                         </div>
                     </div>
+                </div>
+                <div class="tab-pane myCard" id="ajout-employe">
+                    <h6>A FAIRE</h6>
                 </div>
             </div>
         </div>

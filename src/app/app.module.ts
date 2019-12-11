@@ -18,6 +18,8 @@ import { UpdateStockComponent } from './update-stock/update-stock.component';
 import { UpdateSecteurComponent } from './update-secteur/update-secteur.component';
 import { UpdateEnclosComponent } from './update-enclos/update-enclos.component';
 import { UpdateAnimalComponent } from './update-animal/update-animal.component';
+import { UpdateLoginPwdComponent } from './update-login-pwd/update-login-pwd.component';
+import { UpdateEmployeComponent } from './update-employe/update-employe.component';
 
 @NgModule({
   declarations: [
@@ -36,6 +38,8 @@ import { UpdateAnimalComponent } from './update-animal/update-animal.component';
     UpdateSecteurComponent,
     UpdateEnclosComponent,
     UpdateAnimalComponent,
+    UpdateLoginPwdComponent,
+    UpdateEmployeComponent,
   ],
   imports: [
     BrowserModule,

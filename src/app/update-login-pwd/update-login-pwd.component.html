@@ -5,14 +5,14 @@
                 <div class="nav-tabs-wrapper">
                     <ul class="nav nav-tabs" data-tabs="tabs">
                         <li class="nav-item">
-                            <a class="nav-link" [routerLink]="['/stock']" data-toggle="tab">
+                            <a class="nav-link" [routerLink]="['/role']" data-toggle="tab">
                                 <i class="material-icons">reply</i>
                                 <div class="ripple-container"></div>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link active" href="#update-nourriture" data-toggle="tab">
-                                <i class="material-icons">build</i> Modifier aliment
+                            <a class="nav-link active" href="#updateLogAndPwd" data-toggle="tab">
+                                <i class="material-icons">lock_open</i> Modifier Login & Password
                                 <div class="ripple-container"></div>
                             </a>
                         </li>
@@ -22,28 +22,32 @@
         </div>
         <div class="card-body myCard">
             <div class="tab-content myCard">
-                <div class="tab-pane active" id="update-nourriture">
+                <div class="tab-pane active" id="updateLogAndPwd">
                     <div class="container">
                         <div class="row">
                             <div class="col-sm-3">
                             </div>
                             <div class="col-sm-6">
-                                <form [formGroup]="myForm" (ngSubmit)="updateNourriture(nourritureCourante)"
+                                <form [formGroup]="myForm" (ngSubmit)="updateLogAndPwd(userCourant)"
                                     class="was-validated">
-                                    <h3 class="text-primary">Modifier un aliment</h3>
+                                    <h3 class="text-primary">Modifier des informations de connexion</h3>
                                     <div class="form-group">
-                                        <h6>Nom de l'aliment :</h6>
-                                        <input type="text" class="form-control myInput" id="nomNourriture"
-                                            formControlName="nomNourriture"
-                                            [(ngModel)]="nourritureCourante.nomNourriture"
-                                            placeholder="exemple : Viande" required>
+                                        <h6>Nom de l'utilisateur :</h6>
+                                        <p class="text-primary">{{userCourant.nomUser}}</p>
                                     </div>
                                     <div class="form-group">
-                                        <h6>Stock :</h6>
-                                        <input type="number" class="form-control myInput" id="stockNourriture"
-                                            formControlName="stockNourriture"
-                                            [(ngModel)]="nourritureCourante.stockNourriture" placeholder="exemple : 150"
-                                            required>
+                                        <h6>Prénom de l'utilisateur :</h6>
+                                        <p class="text-primary">{{userCourant.prenomUser}}</p>
+                                    </div>
+                                    <div class="form-group">
+                                        <h6>Login :</h6>
+                                        <input type="text" class="form-control myInput" id="loginUser"
+                                            formControlName="loginUser" [(ngModel)]="userCourant.loginUser" required>
+                                    </div>
+                                    <div class="form-group">
+                                        <h6>Password :</h6>
+                                        <input type="text" class="form-control myInput" id="pwdUser"
+                                            formControlName="pwdUser" [(ngModel)]="userCourant.pwdUser" required>
                                     </div>
                                     <button type="submit" class="btn btn-success"
                                         [disabled]="myForm.invalid">Modifier</button>

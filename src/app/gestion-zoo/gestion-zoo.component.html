@@ -82,7 +82,7 @@
                                                                 </td>
                                                                 <td><button type="button"
                                                                         (click)="deleteSecteur(secteur.idSecteur, i)"
-                                                                        class="btn btn-danger"><i
+                                                                        class="btn btn-warning"><i
                                                                             class="material-icons">delete</i>
                                                                         Supprimer</button>
                                                                 </td>
@@ -108,7 +108,7 @@
                                                     class="was-validated myForm">
                                                     <div class="form-group">
                                                         <h3 class="text-primary">Ajouter un nouveau secteur</h3>
-                                                        <p>Nom du secteur :</p>
+                                                        <h6>Nom du secteur :</h6>
                                                         <input type="text" class="form-control myInput" id="nomSecteur"
                                                             formControlName="nomSecteur"
                                                             [(ngModel)]="newSecteur.nomSecteur"
@@ -117,7 +117,7 @@
                                                     <button type="submit" class="btn btn-success"
                                                         [disabled]="myFormSecteur.invalid">Ajouter</button>
                                                     <button type="button" (click)="onResetSecteur()"
-                                                        class="btn btn-danger">Réinitialiser</button>
+                                                        class="btn btn-warning">Réinitialiser</button>
                                                 </form>
                                             </div>
                                             <div class="col-sm-3">
@@ -195,7 +195,7 @@
                                                                 </td>
                                                                 <td><button type="button"
                                                                         (click)="deleteEnclos(enclos.idEnclos, i)"
-                                                                        class="btn btn-danger"><i
+                                                                        class="btn btn-warning"><i
                                                                             class="material-icons">delete</i>
                                                                         Supprimer</button>
                                                                 </td>
@@ -220,7 +220,7 @@
                                                 <form [formGroup]="myFormEnclos" (ngSubmit)="ajoutEnclos()"
                                                     class="was-validated">
                                                     <h3 class="text-primary">Ajouter un nouvel enclos</h3>
-                                                    <p>Nom de l'enclos</p>
+                                                    <h6>Nom de l'enclos</h6>
                                                     <div class="form-group">
                                                         <input type="text" class="form-control myInput" id="nomEnclos"
                                                             formControlName="nomEnclos"
@@ -228,14 +228,14 @@
                                                             placeholder="exemple : Tigres" required>
                                                     </div>
                                                     <div class="form-group">
-                                                        <p>Capacité de l'enclos</p>
+                                                        <h6>Capacité de l'enclos</h6>
                                                         <input type="number" class="form-control myInput"
                                                             id="capaciteEnclos" formControlName="capaciteEnclos"
                                                             [(ngModel)]="newEnclos.capaciteEnclos"
                                                             placeholder="exemple : 10" required>
                                                     </div>
                                                     <div class="form-group">
-                                                        <p>Secteur de l'enclos :</p>
+                                                        <h6>Secteur de l'enclos :</h6>
                                                         <select class="form-control myInput" id="secteurEnclos"
                                                             [(ngModel)]="newEnclos.secteurEnclos"
                                                             formControlName="secteurEnclos" required>
@@ -248,7 +248,7 @@
                                                     <button type="submit" class="btn btn-success"
                                                         [disabled]="myFormEnclos.invalid">Ajouter</button>
                                                     <button type="button" (click)="onResetEnclos()"
-                                                        class="btn btn-danger">Réinitialiser</button>
+                                                        class="btn btn-warning">Réinitialiser</button>
                                                 </form>
                                             </div>
                                             <div class="col-sm-3">
@@ -334,7 +334,7 @@
                                                                 </td>
                                                                 <td><button type="button"
                                                                         (click)="deleteAnimal(animal.idAnimal, i)"
-                                                                        class="btn btn-danger"><i
+                                                                        class="btn btn-warning"><i
                                                                             class="material-icons">delete</i>
                                                                         Supprimer</button>
                                                                 </td>
@@ -360,28 +360,28 @@
                                                     class="was-validated">
                                                     <h3 class="text-primary">Ajouter un nouvel animal</h3>
                                                     <div class="form-group">
-                                                        <p>Nom de l'animal :</p>
+                                                        <h6>Nom de l'animal :</h6>
                                                         <input type="text" class="form-control myInput" id="nomAnimal"
                                                             formControlName="nomAnimal"
                                                             [(ngModel)]="newAnimal.nomAnimal"
                                                             placeholder="exemple : Tigrou" required>
                                                     </div>
                                                     <div class="form-group">
-                                                        <p>Espece de l'animal :</p>
+                                                        <h6>Espece de l'animal :</h6>
                                                         <input type="text" class="form-control myInput"
                                                             id="especeAnimal" formControlName="especeAnimal"
                                                             [(ngModel)]="newAnimal.especeAnimal"
                                                             placeholder="exemple : Tigre" required>
                                                     </div>
                                                     <div class="form-group">
-                                                        <p>Age de l'animal</p>
+                                                        <h6>Age de l'animal</h6>
                                                         <input type="number" class="form-control myInput" id="ageAnimal"
                                                             formControlName="ageAnimal"
                                                             [(ngModel)]="newAnimal.ageAnimal" placeholder="exemple : 5"
                                                             required>
                                                     </div>
                                                     <div class="form-group">
-                                                        <p>Enclos de l'animal :</p>
+                                                        <h6>Enclos de l'animal :</h6>
                                                         <select class="form-control myInput" id="enclosAnimal"
                                                             [(ngModel)]="newAnimal.enclosAnimal"
                                                             formControlName="enclosAnimal" required>
@@ -392,7 +392,7 @@
                                                         </select>
                                                     </div>
                                                     <div class="form-group">
-                                                        <p>Régime alimentaire :</p>
+                                                        <h6>Régime alimentaire :</h6>
                                                         <select class="form-control myInput" id="nourritureAnimal"
                                                             [(ngModel)]="newAnimal.nourritureAnimal"
                                                             formControlName="nourritureAnimal" required>
@@ -405,7 +405,7 @@
                                                     <button type="submit" class="btn btn-success"
                                                         [disabled]="myFormAnimal.invalid">Ajouter</button>
                                                     <button type="button" (click)="onResetAnimal()"
-                                                        class="btn btn-danger">Réinitialiser</button>
+                                                        class="btn btn-warning">Réinitialiser</button>
                                                 </form>
                                             </div>
                                             <div class="col-sm-3">

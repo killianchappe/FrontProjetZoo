@@ -5,13 +5,7 @@
                 <div class="nav-tabs-wrapper">
                     <ul class="nav nav-tabs" data-tabs="tabs">
                         <li class="nav-item">
-                            <a class="nav-link active" href="#logAndPwd" data-toggle="tab">
-                                <i class="material-icons">lock</i> Login & Password
-                                <div class="ripple-container"></div>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#table-role" data-toggle="tab">
+                            <a class="nav-link active" href="#table-role" data-toggle="tab">
                                 <i class="material-icons">person</i> Liste des rôles
                                 <div class="ripple-container"></div>
                             </a>
@@ -19,6 +13,12 @@
                         <li class="nav-item">
                             <a class="nav-link" href="#employe-role" data-toggle="tab">
                                 <i class="material-icons">how_to_reg</i> Gérer les accès manager
+                                <div class="ripple-container"></div>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#logAndPwd" data-toggle="tab">
+                                <i class="material-icons">lock</i> Login & Password
                                 <div class="ripple-container"></div>
                             </a>
                         </li>
@@ -34,47 +34,7 @@
         </div>
         <div class="card-body myCard">
             <div class="tab-content myCard">
-                <div class="tab-pane active myCard" id="logAndPwd">
-                    <div class="col-md-12 myCard">
-                        <div class="card">
-                            <div class="card-body myCard2">
-                                <div class="table-responsive">
-                                    <table class="table">
-                                        <thead class=" text-success">
-                                            <th>
-                                                Nom User
-                                            </th>
-                                            <th>
-                                                Prénom User
-                                            </th>
-                                            <th>
-                                                Login User
-                                            </th>
-                                            <th>
-                                                Password User
-                                            </th>
-                                            <th>
-                                            </th>
-                                        </thead>
-                                        <tbody>
-                                            <tr *ngFor="let user of listUsers">
-                                                <td>{{user.nomUser}}</td>
-                                                <td>{{user.prenomUser}}</td>
-                                                <td>{{user.loginUser}}</td>
-                                                <td>{{user.pwdUser}}</td>
-                                                <td><button type="button" class="btn btn-success"><i
-                                                            class="material-icons">autorenew</i>
-                                                        Modifier</button>
-                                                </td>
-                                            </tr>
-                                        </tbody>
-                                    </table>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="tab-pane myCard" id="table-role">
+                <div class="tab-pane active myCard" id="table-role">
                     <div class="col-md-12 myCard">
                         <div class="card">
                             <div class="card-body myCard2">
@@ -127,9 +87,10 @@
                                                 <td>
                                                     Le manager a accès à la majeure partie des fonctionnalités de
                                                     l'application. Il peut gérer les stocks de nourritures, les animaux,
-                                                    les enclos, les secteurs, les employés et attribuer attribuer des
+                                                    les enclos, les secteurs, les employés et attribuer des
                                                     tâches. Il ne peut cependant pas
-                                                    gérer ses collègues managers. Il n'a pas accès aux mots de passe.
+                                                    gérer les informations de ses collègues managers. Il n'a pas accès
+                                                    aux mots de passe.
                                                 </td>
                                             </tr>
                                             <tr>
@@ -174,20 +135,20 @@
                                                 <td>{{user.nomUser}}</td>
                                                 <td>{{user.prenomUser}}</td>
                                                 <td>{{user.roleUser.libelleRole}}</td>
-                                                <td>
-                                                    <div *ngIf="user.roleUser.libelleRole == 'manager'"><button
-                                                            type="button" class="btn btn-warning"
-                                                            (click)="passerEmploye(user,user.idUser)"><i
-                                                                class="material-icons">call_received</i>
-                                                            Passer employe</button></div>
-                                                    <div *ngIf="user.roleUser.libelleRole == 'employe'"><button
-                                                            type="button" class="btn btn-success"><i
-                                                                class="material-icons"
-                                                                (click)="passerManager(user,user.idUser)">call_made</i>
-                                                            Passer manager</button></div>
-                                                    <div *ngIf="user.roleUser.libelleRole == 'admin'">
-                                                        <p class="text-danger myText">IMPOSSIBLE : ADMIN</p>
-                                                    </div>
+                                                <td *ngIf="user.roleUser.libelleRole == 'manager'">
+                                                    <button type="button" class="btn btn-warning"
+                                                        (click)="passerEmploye(user,user.idUser)"><i
+                                                            class="material-icons">call_received</i>
+                                                        Passer employe</button>
+                                                </td>
+                                                <td *ngIf="user.roleUser.libelleRole == 'employe'">
+                                                    <button type="button" class="btn btn-success"
+                                                        (click)="passerManager(user,user.idUser)"><i
+                                                            class="material-icons">call_made</i>
+                                                        Passer manager</button>
+                                                </td>
+                                                <td *ngIf="user.roleUser.libelleRole == 'admin'">
+                                                    <p class="text-danger myText">IMPOSSIBLE : ADMIN</p>
                                                 </td>
                                             </tr>
                                         </tbody>
@@ -197,7 +158,46 @@
                         </div>
                     </div>
                 </div>
-
+                <div class="tab-pane myCard" id="logAndPwd">
+                    <div class="col-md-12 myCard">
+                        <div class="card">
+                            <div class="card-body myCard2">
+                                <div class="table-responsive">
+                                    <table class="table">
+                                        <thead class=" text-success">
+                                            <th>
+                                                Nom User
+                                            </th>
+                                            <th>
+                                                Prénom User
+                                            </th>
+                                            <th>
+                                                Login User
+                                            </th>
+                                            <th>
+                                                Password User
+                                            </th>
+                                            <th>
+                                            </th>
+                                        </thead>
+                                        <tbody>
+                                            <tr *ngFor="let user of listUsers">
+                                                <td>{{user.nomUser}}</td>
+                                                <td>{{user.prenomUser}}</td>
+                                                <td>{{user.loginUser}}</td>
+                                                <td>{{user.pwdUser}}</td>
+                                                <td><button type="button" [routerLink]="['/updateloginpwd',user.idUser]"
+                                                        class="btn btn-success"><i class="material-icons">autorenew</i>
+                                                        Modifier</button>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
                 <!-- AJOUTER ROLE -->
                 <!-- <div class="tab-pane" id="ajouter-role">
                     <div class="container">
