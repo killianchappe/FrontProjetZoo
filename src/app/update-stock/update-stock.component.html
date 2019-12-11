@@ -1,0 +1,62 @@
+<div class="col-lg-12 col-md-12">
+    <div class="card myCard">
+        <div class="card-header card-header-tabs card-header-success">
+            <div class="nav-tabs-navigation">
+                <div class="nav-tabs-wrapper">
+                    <ul class="nav nav-tabs" data-tabs="tabs">
+                        <li class="nav-item">
+                            <a class="nav-link" [routerLink]="['/stock']" data-toggle="tab">
+                                <i class="material-icons">eco</i> Stock alimentaire
+                                <div class="ripple-container"></div>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link active" href="#update-nourriture" data-toggle="tab">
+                                <i class="material-icons">build</i> Modifier aliment
+                                <div class="ripple-container"></div>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="card-body myCard">
+            <div class="tab-content myCard">
+                <div class="tab-pane active" id="update-nourriture">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-sm-3">
+                            </div>
+                            <div class="col-sm-6">
+                                <form [formGroup]="myForm" (ngSubmit)="updateNourriture(nourritureCourante)"
+                                    class="was-validated">
+                                    <h3 class="text-primary">Modifier un aliment</h3>
+                                    <div class="form-group">
+                                        <p>Nom de l'aliment :</p>
+                                        <input type="text" class="form-control myInput" id="nomNourriture"
+                                            formControlName="nomNourriture"
+                                            [(ngModel)]="nourritureCourante.nomNourriture"
+                                            placeholder="exemple : Viande" required>
+                                    </div>
+                                    <div class="form-group">
+                                        <p>Stock :</p>
+                                        <input type="number" class="form-control myInput" id="stockNourriture"
+                                            formControlName="stockNourriture"
+                                            [(ngModel)]="nourritureCourante.stockNourriture" placeholder="exemple : 150"
+                                            required>
+                                    </div>
+                                    <button type="submit" class="btn btn-success"
+                                        [disabled]="myForm.invalid">Modifier</button>
+                                    <button type="button" (click)="onReset()"
+                                        class="btn btn-danger">Réinitialiser</button>
+                                </form>
+                            </div>
+                            <div class="col-sm-3">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

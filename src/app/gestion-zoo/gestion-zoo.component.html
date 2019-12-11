@@ -5,7 +5,7 @@
                 <div class="nav-tabs-wrapper">
                     <ul class="nav nav-tabs" data-tabs="tabs">
                         <li class="nav-item">
-                            <a class="nav-link" href="#secteur" data-toggle="tab">
+                            <a class="nav-link active" href="#secteur" data-toggle="tab">
                                 <i class="material-icons">landscape</i> Secteurs
                                 <div class="ripple-container"></div>
                             </a>
@@ -28,7 +28,7 @@
         </div>
         <div class="card-body myCard">
             <div class="tab-content myCard">
-                <div class="tab-pane" id="secteur">
+                <div class="tab-pane active" id="secteur">
 
                     <!-- ZONE 1-->
                     <div class="card myCard">
@@ -37,7 +37,7 @@
                                 <div class="nav-tabs-wrapper">
                                     <ul class="nav nav-tabs" data-tabs="tabs">
                                         <li class="nav-item">
-                                            <a class="nav-link" href="#table-secteur" data-toggle="tab">
+                                            <a class="nav-link active" href="#table-secteur" data-toggle="tab">
                                                 <i class="material-icons">landscape</i> Liste des secteurs
                                                 <div class="ripple-container"></div>
                                             </a>
@@ -54,7 +54,7 @@
                         </div>
                         <div class="card-body myCard">
                             <div class="tab-content myCard">
-                                <div class="tab-pane" id="table-secteur">
+                                <div class="tab-pane active" id="table-secteur">
 
                                     <!-- Liste Secteurs -->
                                     <div class="col-md-12 myCard">
@@ -74,25 +74,9 @@
                                                         <tbody>
                                                             <tr *ngFor="let secteur of listSecteurs">
                                                                 <td>{{secteur.nomSecteur}}</td>
-                                                                <td>
-                                                                    <!-- TEST -->
-                                                                    <!-- <form
-                                                                        [formGroup]="myFormSecteur2"
-                                                                        (ngSubmit)="updateSecteur(secteur)"
-                                                                        class="was-validated">
-                                                                        <div class="form-group">
-                                                                            <input type="text" class="form-control"
-                                                                                id="nomSecteur"
-                                                                                formControlName="nomSecteur"
-                                                                                [(ngModel)]="secteur.nomSecteur"
-                                                                                required>
-                                                                        </div>
-                                                                        <button type="submit" class="btn btn-success"
-                                                                            [disabled]="myForm.invalid">Modifier</button>
-                                                                    </form> -->
-                                                                    <!-- TEST -->
-                                                                </td>
-                                                                <td><button type="button" class="btn btn-success"><i
+                                                                <td><button type="button"
+                                                                        [routerLink]="['/updatesecteur',secteur.idSecteur]"
+                                                                        class="btn btn-success"><i
                                                                             class="material-icons">autorenew</i>
                                                                         Modifier</button>
                                                                 </td>
@@ -158,7 +142,7 @@
                                 <div class="nav-tabs-wrapper">
                                     <ul class="nav nav-tabs" data-tabs="tabs">
                                         <li class="nav-item">
-                                            <a class="nav-link" href="#table-enclos" data-toggle="tab">
+                                            <a class="nav-link active" href="#table-enclos" data-toggle="tab">
                                                 <i class="material-icons">photo</i> Liste des enclos
                                                 <div class="ripple-container"></div>
                                             </a>
@@ -175,7 +159,7 @@
                         </div>
                         <div class="card-body myCard">
                             <div class="tab-content myCard">
-                                <div class="tab-pane" id="table-enclos">
+                                <div class="tab-pane active" id="table-enclos">
 
                                     <!-- Liste Enclos -->
                                     <div class="col-md-12 myCard">
@@ -203,7 +187,9 @@
                                                                 <td>{{enclos.nomEnclos}}</td>
                                                                 <td>{{enclos.capaciteEnclos}}</td>
                                                                 <td>{{enclos.secteurEnclos.nomSecteur}}</td>
-                                                                <td><button type="button" class="btn btn-success"><i
+                                                                <td><button type="button"
+                                                                        [routerLink]="['/updateenclos',enclos.idEnclos]"
+                                                                        class="btn btn-success"><i
                                                                             class="material-icons">autorenew</i>
                                                                         Modifier</button>
                                                                 </td>
@@ -287,7 +273,7 @@
                                 <div class="nav-tabs-wrapper">
                                     <ul class="nav nav-tabs" data-tabs="tabs">
                                         <li class="nav-item">
-                                            <a class="nav-link" href="#table-animal" data-toggle="tab">
+                                            <a class="nav-link active" href="#table-animal" data-toggle="tab">
                                                 <i class="material-icons">pets</i> Liste des animaux
                                                 <div class="ripple-container"></div>
                                             </a>
@@ -304,7 +290,7 @@
                         </div>
                         <div class="card-body myCard">
                             <div class="tab-content myCard">
-                                <div class="tab-pane" id="table-animal">
+                                <div class="tab-pane active" id="table-animal">
 
                                     <!-- Liste Animaux -->
                                     <div class="col-md-12 myCard">
@@ -340,7 +326,9 @@
                                                                 <td>{{animal.ageAnimal}}</td>
                                                                 <td>{{animal.enclosAnimal.nomEnclos}}</td>
                                                                 <td>{{animal.nourritureAnimal.nomNourriture}}</td>
-                                                                <td><button type="button" class="btn btn-success"><i
+                                                                <td><button type="button"
+                                                                        [routerLink]="['/updateanimal',animal.idAnimal]"
+                                                                        class="btn btn-success"><i
                                                                             class="material-icons">autorenew</i>
                                                                         Modifier</button>
                                                                 </td>

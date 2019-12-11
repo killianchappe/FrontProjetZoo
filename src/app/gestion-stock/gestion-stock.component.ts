@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 import Swal from 'sweetalert2';
 import { FormBuilder, FormGroup, Validators, FormControl } from '@angular/forms';
 import { Nourriture } from "../models/nourriture";
@@ -34,7 +34,7 @@ export class GestionStockComponent implements OnInit {
     this.myForm.reset();
   }
 
-  deleteNourriture(id: number, index) {
+  deleteNourriture(id: number) {
     Swal.fire({
       title: 'Voulez-vous vraiment faire cela?',
       icon: 'question',

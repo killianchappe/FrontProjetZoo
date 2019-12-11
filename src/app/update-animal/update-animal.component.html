@@ -1,0 +1,129 @@
+<div class="col-lg-12 col-md-12">
+    <div class="card myCard">
+        <div class="card-header card-header-tabs card-header-success">
+            <div class="nav-tabs-navigation">
+                <div class="nav-tabs-wrapper">
+                    <ul class="nav nav-tabs" data-tabs="tabs">
+                        <li class="nav-item">
+                            <a class="nav-link" [routerLink]="['/zoo']" data-toggle="tab">
+                                <i class="material-icons">landscape</i> Secteurs
+                                <div class="ripple-container"></div>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" [routerLink]="['/zoo']" data-toggle="tab">
+                                <i class="material-icons">photo</i> Enclos
+                                <div class="ripple-container"></div>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link active" href="#animal" data-toggle="tab">
+                                <i class="material-icons">pets</i> Animaux
+                                <div class="ripple-container"></div>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="card-body myCard">
+            <div class="tab-content myCard">
+                <div class="tab-pane active" id="animal">
+                    <div class="card myCard">
+                        <div class="card-header card-header-tabs card-header-success">
+                            <div class="nav-tabs-navigation">
+                                <div class="nav-tabs-wrapper">
+                                    <ul class="nav nav-tabs" data-tabs="tabs">
+                                        <li class="nav-item">
+                                            <a class="nav-link" [routerLink]="['/zoo']" data-toggle="tab">
+                                                <i class="material-icons">pets</i> Liste des animaux
+                                                <div class="ripple-container"></div>
+                                            </a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link active" href="#update-animal" data-toggle="tab">
+                                                <i class="material-icons">build</i> Modifier Animal
+                                                <div class="ripple-container"></div>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-body myCard">
+                            <div class="tab-content myCard">
+                                <div class="tab-pane active" id="update-animal">
+
+                                    <!-- Update Animal -->
+                                    <div class="container">
+                                        <div class="row">
+                                            <div class="col-sm-3">
+                                            </div>
+                                            <div class="col-sm-6">
+                                                <form [formGroup]="myForm" (ngSubmit)="updateAnimal(animalCourant)"
+                                                    class="was-validated">
+                                                    <h3 class="text-primary">Modifier un animal</h3>
+                                                    <div class="form-group">
+                                                        <p>Nom de l'animal :</p>
+                                                        <input type="text" class="form-control myInput" id="nomAnimal"
+                                                            formControlName="nomAnimal"
+                                                            [(ngModel)]="animalCourant.nomAnimal"
+                                                            placeholder="exemple : Tigrou" required>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <p>Espece de l'animal :</p>
+                                                        <input type="text" class="form-control myInput"
+                                                            id="especeAnimal" formControlName="especeAnimal"
+                                                            [(ngModel)]="animalCourant.especeAnimal"
+                                                            placeholder="exemple : Tigre" required>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <p>Age de l'animal</p>
+                                                        <input type="number" class="form-control myInput" id="ageAnimal"
+                                                            formControlName="ageAnimal"
+                                                            [(ngModel)]="animalCourant.ageAnimal"
+                                                            placeholder="exemple : 5" required>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <p>Enclos de l'animal :</p>
+                                                        <select class="form-control myInput" id="enclosAnimal"
+                                                            [(ngModel)]="animalCourant.enclosAnimal"
+                                                            formControlName="enclosAnimal" required>
+                                                            <option *ngFor="let enclos of listEnclos;"
+                                                                [ngValue]="enclos">
+                                                                {{enclos.nomEnclos}}
+                                                            </option>
+                                                        </select>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <p>Régime alimentaire :</p>
+                                                        <select class="form-control myInput" id="nourritureAnimal"
+                                                            [(ngModel)]="animalCourant.nourritureAnimal"
+                                                            formControlName="nourritureAnimal" required>
+                                                            <option *ngFor="let nourriture of listNourritures;"
+                                                                [ngValue]="nourriture">
+                                                                {{nourriture.nomNourriture}}
+                                                            </option>
+                                                        </select>
+                                                    </div>
+                                                    <button type="submit" class="btn btn-success"
+                                                        [disabled]="myFormAnimal.invalid">Modifier</button>
+                                                    <button type="button" (click)="onReset()"
+                                                        class="btn btn-danger">Réinitialiser</button>
+                                                </form>
+                                            </div>
+                                            <div class="col-sm-3">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- Fin Update Animal -->
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

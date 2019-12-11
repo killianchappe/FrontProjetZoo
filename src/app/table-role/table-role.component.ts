@@ -85,4 +85,47 @@ export class TableRoleComponent implements OnInit {
     });
   }
 
+  passerManager(user: User, id: number) {
+    console.log('test');
+    user.roleUser.idRole = 2;
+    this.userService.updateUser(user, id).subscribe(res => {
+      if (res) {
+        Swal.fire({
+          title: 'Modification effectuée!',
+          icon: 'success',
+          showCancelButton: true,
+          showCloseButton: true,
+          focusConfirm: true,
+          confirmButtonText: 'Voir la liste',
+          cancelButtonText: 'Modifier à nouveau'
+        }).then((result) => {
+          if (result.value) {
+            this.ngOnInit();
+          }
+        })
+      }
+    })
+  }
+
+  passerEmploye(user: User, id: number) {
+    user.roleUser.idRole = 3;
+    this.userService.updateUser(user, id).subscribe(res => {
+      if (res) {
+        Swal.fire({
+          title: 'Modification effectuée!',
+          icon: 'success',
+          showCancelButton: true,
+          showCloseButton: true,
+          focusConfirm: true,
+          confirmButtonText: 'Voir la liste',
+          cancelButtonText: 'Modifier à nouveau'
+        }).then((result) => {
+          if (result.value) {
+            this.ngOnInit();
+          }
+        })
+      }
+    })
+  }
+
 }

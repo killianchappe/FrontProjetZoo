@@ -1,0 +1,111 @@
+<div class="col-lg-12 col-md-12">
+    <div class="card myCard">
+        <div class="card-header card-header-tabs card-header-success">
+            <div class="nav-tabs-navigation">
+                <div class="nav-tabs-wrapper">
+                    <ul class="nav nav-tabs" data-tabs="tabs">
+                        <li class="nav-item">
+                            <a class="nav-link" [routerLink]="['/zoo']" data-toggle="tab">
+                                <i class="material-icons">landscape</i> Secteurs
+                                <div class="ripple-container"></div>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link active" href="#enclos" data-toggle="tab">
+                                <i class="material-icons">photo</i> Enclos
+                                <div class="ripple-container"></div>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" [routerLink]="['/zoo']" data-toggle="tab">
+                                <i class="material-icons">pets</i> Animaux
+                                <div class="ripple-container"></div>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="card-body myCard">
+            <div class="tab-content myCard">
+                <div class="tab-pane active" id="enclos">
+                    <div class="card myCard">
+                        <div class="card-header card-header-tabs card-header-success">
+                            <div class="nav-tabs-navigation">
+                                <div class="nav-tabs-wrapper">
+                                    <ul class="nav nav-tabs" data-tabs="tabs">
+                                        <li class="nav-item">
+                                            <a class="nav-link" [routerLink]="['/zoo']" data-toggle="tab">
+                                                <i class="material-icons">photo</i> Liste des enclos
+                                                <div class="ripple-container"></div>
+                                            </a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link active" href="#update-enclos" data-toggle="tab">
+                                                <i class="material-icons">build</i> Modifier Enclos
+                                                <div class="ripple-container"></div>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-body myCard">
+                            <div class="tab-content myCard">
+                                <div class="tab-pane active" id="update-secteur">
+
+                                    <!-- Update Enclos -->
+                                    <div class="container">
+                                        <div class="row">
+                                            <div class="col-sm-3">
+                                            </div>
+                                            <div class="col-sm-6">
+                                                <form [formGroup]="myForm" (ngSubmit)="updateEnclos(enclosCourant)"
+                                                    class="was-validated">
+                                                    <h3 class="text-primary">Modifier un enclos</h3>
+                                                    <p>Nom de l'enclos</p>
+                                                    <div class="form-group">
+                                                        <input type="text" class="form-control myInput" id="nomEnclos"
+                                                            formControlName="nomEnclos"
+                                                            [(ngModel)]="enclosCourant.nomEnclos"
+                                                            placeholder="exemple : Tigres" required>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <p>Capacité de l'enclos</p>
+                                                        <input type="number" class="form-control myInput"
+                                                            id="capaciteEnclos" formControlName="capaciteEnclos"
+                                                            [(ngModel)]="enclosCourant.capaciteEnclos"
+                                                            placeholder="exemple : 10" required>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <p>Secteur de l'enclos :</p>
+                                                        <select class="form-control myInput" id="secteurEnclos"
+                                                            [(ngModel)]="enclosCourant.secteurEnclos"
+                                                            formControlName="secteurEnclos" required>
+                                                            <option *ngFor="let secteur of listSecteurs;"
+                                                                [ngValue]="secteur">
+                                                                {{secteur.nomSecteur}}
+                                                            </option>
+                                                        </select>
+                                                    </div>
+                                                    <button type="submit" class="btn btn-success"
+                                                        [disabled]="myForm.invalid">Modifier</button>
+                                                    <button type="button" (click)="onReset()"
+                                                        class="btn btn-danger">Réinitialiser</button>
+                                                </form>
+                                            </div>
+                                            <div class="col-sm-3">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- Fin Update Enclos -->
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

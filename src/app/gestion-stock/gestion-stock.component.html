@@ -5,7 +5,7 @@
                 <div class="nav-tabs-wrapper">
                     <ul class="nav nav-tabs" data-tabs="tabs">
                         <li class="nav-item">
-                            <a class="nav-link" href="#table-nourriture" data-toggle="tab">
+                            <a class="nav-link active" href="#table-nourriture" data-toggle="tab">
                                 <i class="material-icons">eco</i> Stock alimentaire
                                 <div class="ripple-container"></div>
                             </a>
@@ -22,7 +22,7 @@
         </div>
         <div class="card-body myCard">
             <div class="tab-content myCard">
-                <div class="tab-pane myCard" id="table-nourriture">
+                <div class="tab-pane active myCard" id="table-nourriture">
                     <div class="col-md-12 myCard">
                         <div class="card">
                             <div class="card-body myCard2">
@@ -39,17 +39,20 @@
                                             </th>
                                             <th>
                                             </th>
+                                            <th>
+                                            </th>
                                         </thead>
                                         <tbody>
                                             <tr *ngFor="let nourriture of listNourritures">
                                                 <td>{{nourriture.nomNourriture}}</td>
                                                 <td>{{nourriture.stockNourriture}}</td>
-                                                <td><button type="button" class="btn btn-success"><i
-                                                            class="material-icons">autorenew</i>
+                                                <td><button type="button"
+                                                        [routerLink]="['/updatestock',nourriture.idNourriture]"
+                                                        class="btn btn-success"><i class="material-icons">autorenew</i>
                                                         Modifier</button>
                                                 </td>
                                                 <td><button type="button"
-                                                        (click)="deleteNourriture(nourriture.idNourriture, i)"
+                                                        (click)="deleteNourriture(nourriture.idNourriture)"
                                                         class="btn btn-danger"><i class="material-icons">delete</i>
                                                         Supprimer</button>
                                                 </td>

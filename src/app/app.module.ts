@@ -14,6 +14,10 @@ import { GestionZooComponent } from './gestion-zoo/gestion-zoo.component';
 import { GestionStockComponent } from './gestion-stock/gestion-stock.component';
 import { CompteComponent } from './compte/compte.component';
 import { HomeComponent } from './home/home.component';
+import { UpdateStockComponent } from './update-stock/update-stock.component';
+import { UpdateSecteurComponent } from './update-secteur/update-secteur.component';
+import { UpdateEnclosComponent } from './update-enclos/update-enclos.component';
+import { UpdateAnimalComponent } from './update-animal/update-animal.component';
 
 @NgModule({
   declarations: [
@@ -28,6 +32,10 @@ import { HomeComponent } from './home/home.component';
     GestionStockComponent,
     CompteComponent,
     HomeComponent,
+    UpdateStockComponent,
+    UpdateSecteurComponent,
+    UpdateEnclosComponent,
+    UpdateAnimalComponent,
   ],
   imports: [
     BrowserModule,
