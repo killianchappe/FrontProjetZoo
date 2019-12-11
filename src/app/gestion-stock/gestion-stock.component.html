@@ -1,0 +1,99 @@
+<div class="col-lg-12 col-md-12">
+    <div class="card myCard">
+        <div class="card-header card-header-tabs card-header-success">
+            <div class="nav-tabs-navigation">
+                <div class="nav-tabs-wrapper">
+                    <ul class="nav nav-tabs" data-tabs="tabs">
+                        <li class="nav-item">
+                            <a class="nav-link" href="#table-nourriture" data-toggle="tab">
+                                <i class="material-icons">eco</i> Stock alimentaire
+                                <div class="ripple-container"></div>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#ajouter-nourriture" data-toggle="tab">
+                                <i class="material-icons">playlist_add</i> Ajouter aliment
+                                <div class="ripple-container"></div>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="card-body myCard">
+            <div class="tab-content myCard">
+                <div class="tab-pane myCard" id="table-nourriture">
+                    <div class="col-md-12 myCard">
+                        <div class="card">
+                            <div class="card-body myCard2">
+                                <div class="table-responsive">
+                                    <table class="table">
+                                        <thead class=" text-success">
+                                            <th>
+                                                Nom aliment
+                                            </th>
+                                            <th>
+                                                Stock
+                                            </th>
+                                            <th>
+                                            </th>
+                                            <th>
+                                            </th>
+                                        </thead>
+                                        <tbody>
+                                            <tr *ngFor="let nourriture of listNourritures">
+                                                <td>{{nourriture.nomNourriture}}</td>
+                                                <td>{{nourriture.stockNourriture}}</td>
+                                                <td><button type="button" class="btn btn-success"><i
+                                                            class="material-icons">autorenew</i>
+                                                        Modifier</button>
+                                                </td>
+                                                <td><button type="button"
+                                                        (click)="deleteNourriture(nourriture.idNourriture, i)"
+                                                        class="btn btn-danger"><i class="material-icons">delete</i>
+                                                        Supprimer</button>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="tab-pane" id="ajouter-nourriture">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-sm-3">
+                            </div>
+                            <div class="col-sm-6">
+                                <form [formGroup]="myForm" (ngSubmit)="ajoutNourriture()" class="was-validated">
+                                    <h3 class="text-primary">Ajouter un nouvel aliment</h3>
+                                    <div class="form-group">
+                                        <p>Nom de l'aliment :</p>
+                                        <input type="text" class="form-control myInput" id="nomNourriture"
+                                            formControlName="nomNourriture" [(ngModel)]="newNourriture.nomNourriture"
+                                            placeholder="exemple : Viande" required>
+                                    </div>
+                                    <div class="form-group">
+                                        <p>Stock :</p>
+                                        <input type="number" class="form-control myInput" id="stockNourriture"
+                                            formControlName="stockNourriture"
+                                            [(ngModel)]="newNourriture.stockNourriture" placeholder="exemple : 150"
+                                            required>
+                                    </div>
+                                    <button type="submit" class="btn btn-success"
+                                        [disabled]="myForm.invalid">Ajouter</button>
+                                    <button type="button" (click)="onReset()"
+                                        class="btn btn-danger">Réinitialiser</button>
+                                </form>
+                            </div>
+                            <div class="col-sm-3">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

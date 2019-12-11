@@ -1,0 +1,143 @@
+<div class="col-lg-12 col-md-12">
+    <div class="card myCard">
+        <div class="card-header card-header-tabs card-header-success">
+            <div class="nav-tabs-navigation">
+                <div class="nav-tabs-wrapper">
+                    <ul class="nav nav-tabs" data-tabs="tabs">
+                        <li class="nav-item">
+                            <a class="nav-link" href="#logAndPwd" data-toggle="tab">
+                                <i class="material-icons">lock</i> Login & Password
+                                <div class="ripple-container"></div>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#table-role" data-toggle="tab">
+                                <i class="material-icons">person</i> Liste des rôles
+                                <div class="ripple-container"></div>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#ajouter-role" data-toggle="tab">
+                                <i class="material-icons">person_add</i> Ajouter rôle
+                                <div class="ripple-container"></div>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="card-body myCard">
+            <div class="tab-content myCard">
+                <div class="tab-pane myCard" id="table-role">
+                    <div class="col-md-12 myCard">
+                        <div class="card">
+                            <div class="card-body myCard2">
+                                <div class="table-responsive">
+                                    <table class="table">
+                                        <thead class=" text-success">
+                                            <th>
+                                                Libellé du rôle
+                                            </th>
+                                            <th>
+                                            </th>
+                                            <th>
+                                            </th>
+                                        </thead>
+                                        <tbody>
+                                            <tr *ngFor="let role of listRoles">
+                                                <td>{{role.libelleRole}}</td>
+                                                <td>
+                                                    <div *ngIf="role.libelleRole != 'admin'"><button type="button"
+                                                            class="btn btn-success"><i
+                                                                class="material-icons">autorenew</i>
+                                                            Modifier</button></div>
+                                                    <div *ngIf="role.libelleRole == 'admin'">
+                                                        <p class="text-danger myText">IMPOSSIBLE : ADMIN</p>
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <div *ngIf="role.libelleRole != 'admin'"><button type="button"
+                                                            (click)="deleteRole(role.idRole, i)"
+                                                            class="btn btn-danger"><i class="material-icons">delete</i>
+                                                            Supprimer</button></div>
+                                                    <div *ngIf="role.libelleRole == 'admin'">
+                                                        <p class="text-danger myText">IMPOSSIBLE : ADMIN</p>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="tab-pane" id="ajouter-role">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-sm-3">
+                            </div>
+                            <div class="col-sm-6">
+                                <form [formGroup]="myForm" (ngSubmit)="ajoutRole()" class="was-validated">
+                                    <h3 class="text-primary">Ajouter un nouveau rôle</h3>
+                                    <div class="form-group">
+                                        <p>Nom du rôle :</p>
+                                        <input type="text" class="form-control myInput" id="libelleRole"
+                                            formControlName="libelleRole" [(ngModel)]="newRole.libelleRole"
+                                            placeholder="exemple : Manager" required>
+                                    </div>
+                                    <button type="submit" class="btn btn-success"
+                                        [disabled]="myForm.invalid">Ajouter</button>
+                                    <button type="button" (click)="onReset()"
+                                        class="btn btn-danger">Réinitialiser</button>
+                                </form>
+                            </div>
+                            <div class="col-sm-3">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="tab-pane myCard" id="logAndPwd">
+                    <div class="col-md-12 myCard">
+                        <div class="card">
+                            <div class="card-body myCard2">
+                                <div class="table-responsive">
+                                    <table class="table">
+                                        <thead class=" text-success">
+                                            <th>
+                                                Nom User
+                                            </th>
+                                            <th>
+                                                Prénom User
+                                            </th>
+                                            <th>
+                                                Login User
+                                            </th>
+                                            <th>
+                                                Password User
+                                            </th>
+                                            <th>
+                                            </th>
+                                        </thead>
+                                        <tbody>
+                                            <tr *ngFor="let user of listUsers">
+                                                <td>{{user.nomUser}}</td>
+                                                <td>{{user.prenomUser}}</td>
+                                                <td>{{user.loginUser}}</td>
+                                                <td>{{user.pwdUser}}</td>
+                                                <td><button type="button" class="btn btn-success"><i
+                                                            class="material-icons">autorenew</i>
+                                                        Modifier</button>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

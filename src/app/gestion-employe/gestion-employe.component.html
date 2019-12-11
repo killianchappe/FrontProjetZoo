@@ -1,0 +1,83 @@
+<div class="col-lg-12 col-md-12">
+    <div class="card myCard">
+        <div class="card-header card-header-tabs card-header-success">
+            <div class="nav-tabs-navigation">
+                <div class="nav-tabs-wrapper">
+                    <ul class="nav nav-tabs" data-tabs="tabs">
+                        <li class="nav-item">
+                            <a class="nav-link" href="#table-employe" data-toggle="tab">
+                                <i class="material-icons">person</i> Gestion du personnel
+                                <div class="ripple-container"></div>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#table-employe-2" data-toggle="tab">
+                                <i class="material-icons">person_pin</i> Tronbinoscope
+                                <div class="ripple-container"></div>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="card-body myCard">
+            <div class="tab-content myCard">
+                <div class="tab-pane myCard" id="table-employe">
+                    <div class="col-md-12 myCard">
+                        <div class="card">
+                            <div class="card-body myCard2">
+                                <div class="table-responsive">
+                                    <table class="table">
+                                        <thead class=" text-success">
+                                            <th>
+                                                Nom
+                                            </th>
+                                            <th>
+                                                Prénom
+                                            </th>
+                                            <th>
+                                                Email
+                                            </th>
+                                            <th>
+                                                Secteur
+                                            </th>
+                                            <th>
+                                                Rôle
+                                            </th>
+                                            <th>
+                                            </th>
+                                            <th>
+                                            </th>
+                                        </thead>
+                                        <tbody>
+                                            <tr *ngFor="let employe of listEmployes">
+                                                <td>{{employe.nomUser}}</td>
+                                                <td>{{employe.prenomUser}}</td>
+                                                <td>{{employe.emailUser}}</td>
+                                                <td>{{employe.secteurUser.nomSecteur}}</td>
+                                                <td>{{employe.roleUser.libelleRole}}</td>
+                                                <td><button type="button" class="btn btn-success"><i
+                                                            class="material-icons">autorenew</i>
+                                                        Modifier</button>
+                                                </td>
+                                                <td>
+                                                    <div *ngIf="employe.roleUser.libelleRole != 'admin'"><button
+                                                            type="button" (click)="deleteEmploye(employe.idEmploye, i)"
+                                                            class="btn btn-danger"><i class="material-icons">gavel</i>
+                                                            Licencier</button></div>
+                                                    <div *ngIf="employe.roleUser.libelleRole == 'admin'">
+                                                        <p class="text-danger myText">IMPOSSIBLE : ADMIN</p>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,47 @@
+<div class="sidebar mySidebar" data-color="green">
+    <div class="logo mySidebar myHomeButton">
+        <a [routerLink]="['/home']" class="nav-link simple-text logo-normal">
+            <i class="material-icons">language</i> ACCEUIL
+        </a>
+    </div>
+    <div class="sidebar-wrapper mySidebar">
+        <ul class="nav">
+            <li class="nav-item" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}">
+                <a class="nav-link" [routerLink]="['/employe']">
+                    <i class="material-icons">people</i>
+                    <p>Personnel</p>
+                </a>
+            </li>
+            <li class="nav-item" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}">
+                <a class="nav-link" [routerLink]="['/tache']">
+                    <i class="material-icons">assignment</i>
+                    <p>Gestion des tâches</p>
+                </a>
+            </li>
+            <li class="nav-item " [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}">
+                <a class="nav-link" [routerLink]="['/zoo']">
+                    <i class="material-icons">local_florist</i>
+                    <p>Gestion du Zoo</p>
+                </a>
+            </li>
+            <li class="nav-item " [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}">
+                <a class="nav-link" [routerLink]="['/stock']">
+                    <i class="material-icons">eco</i>
+                    <p>Stock alimentaire</p>
+                </a>
+            </li>
+            <li class="nav-item " [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}">
+                <a class="nav-link" [routerLink]="['/role']">
+                    <i class="material-icons">lock_open</i>
+                    <p>INTERFACE ADMIN</p>
+                </a>
+            </li>
+            <li class="nav-item " [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}">
+                <a class="nav-link" [routerLink]="['/compte']">
+                    <i class="material-icons">face</i>
+                    <p>Mon Compte</p>
+                </a>
+            </li>
+        </ul>
+    </div>
+</div>
