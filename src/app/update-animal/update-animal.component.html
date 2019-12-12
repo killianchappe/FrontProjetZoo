@@ -74,8 +74,8 @@
                                                     </div>
                                                     <div class="form-group">
                                                         <p>Enclos de l'animal :</p>
-                                                        <select class="form-control myInput" id="enclosAnimal"
-                                                            [(ngModel)]="animalCourant.enclosAnimal"
+                                                        <select [compareWith]="byIdEnclos" class="form-control myInput"
+                                                            id="enclosAnimal" [(ngModel)]="animalCourant.enclosAnimal"
                                                             formControlName="enclosAnimal" required>
                                                             <option *ngFor="let enclos of listEnclos;"
                                                                 [ngValue]="enclos">
@@ -85,7 +85,8 @@
                                                     </div>
                                                     <div class="form-group">
                                                         <p>Régime alimentaire :</p>
-                                                        <select class="form-control myInput" id="nourritureAnimal"
+                                                        <select [compareWith]="byIdNourriture"
+                                                            class="form-control myInput" id="nourritureAnimal"
                                                             [(ngModel)]="animalCourant.nourritureAnimal"
                                                             formControlName="nourritureAnimal" required>
                                                             <option *ngFor="let nourriture of listNourritures;"

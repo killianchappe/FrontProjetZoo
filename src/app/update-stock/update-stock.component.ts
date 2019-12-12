@@ -42,11 +42,10 @@ export class UpdateStockComponent implements OnInit {
         Swal.fire({
           title: 'Modification effectuée!',
           icon: 'success',
-          showCancelButton: true,
+          showCancelButton: false,
           showCloseButton: true,
           focusConfirm: true,
-          confirmButtonText: 'Voir la liste',
-          cancelButtonText: 'Modifier à nouveau'
+          confirmButtonText: 'OK',
         }).then((result) => {
           if (result.value) {
             this.router.navigate(['/stock'])

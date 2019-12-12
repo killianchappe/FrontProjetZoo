@@ -23,7 +23,53 @@
         <div class="card-body myCard">
             <div class="tab-content myCard">
                 <div class="tab-pane active myCard" id="update-employe">
-                    <h6>A FAIRE</h6>
+
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-sm-3">
+                            </div>
+                            <div class="col-sm-6">
+                                <form [formGroup]="myForm" (ngSubmit)="updateUser(userCourant)" class="was-validated">
+                                    <h3 class="text-primary">Modifier un employé</h3>
+                                    <div class="form-group">
+                                        <h6>Nom :</h6>
+                                        <input type="text" class="form-control myInput" id="nomUser"
+                                            formControlName="nomUser" [(ngModel)]="userCourant.nomUser"
+                                            placeholder="exemple : Smith" required>
+                                    </div>
+                                    <div class="form-group">
+                                        <h6>Prénom :</h6>
+                                        <input type="text" class="form-control myInput" id="prenomUser"
+                                            formControlName="prenomUser" [(ngModel)]="userCourant.prenomUser"
+                                            placeholder="exemple : John" required>
+                                    </div>
+                                    <div class="form-group">
+                                        <h6>Email :</h6>
+                                        <input type="email" class="form-control myInput" id="emailUser"
+                                            formControlName="emailUser" [(ngModel)]="userCourant.emailUser"
+                                            placeholder="exemple : john.smith@gmail.com" required>
+                                    </div>
+                                    <div class="form-group">
+                                        <h6>Secteur :</h6>
+                                        <select [compareWith]="byIdSecteur" class="form-control myInput"
+                                            id="secteurUser" [(ngModel)]="userCourant.secteurUser"
+                                            formControlName="secteurUser" required>
+                                            <option *ngFor="let secteur of listSecteurs;" [ngValue]="secteur">
+                                                {{secteur.nomSecteur}}
+                                            </option>
+                                        </select>
+                                    </div>
+                                    <button type="submit" class="btn btn-success"
+                                        [disabled]="myForm.invalid">Modifier</button>
+                                    <button type="button" (click)="onReset()"
+                                        class="btn btn-warning">Réinitialiser</button>
+                                </form>
+                            </div>
+                            <div class="col-sm-3">
+                            </div>
+                        </div>
+                    </div>
+
                 </div>
             </div>
         </div>

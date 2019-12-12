@@ -10,12 +10,6 @@
                                 <div class="ripple-container"></div>
                             </a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#ajout-employe" data-toggle="tab">
-                                <i class="material-icons">person_add</i> Embaucher un employé
-                                <div class="ripple-container"></div>
-                            </a>
-                        </li>
                     </ul>
                 </div>
             </div>
@@ -63,7 +57,7 @@
                                                 </td>
                                                 <td>
                                                     <div *ngIf="employe.roleUser.libelleRole != 'admin'"><button
-                                                            type="button" (click)="deleteEmploye(employe.idEmploye, i)"
+                                                            type="button" (click)="deleteEmploye(employe.idUser, i)"
                                                             class="btn btn-danger"><i class="material-icons">gavel</i>
                                                             Licencier</button></div>
                                                     <div *ngIf="employe.roleUser.libelleRole == 'admin'">
@@ -77,9 +71,6 @@
                             </div>
                         </div>
                     </div>
-                </div>
-                <div class="tab-pane myCard" id="ajout-employe">
-                    <h6>A FAIRE</h6>
                 </div>
             </div>
         </div>

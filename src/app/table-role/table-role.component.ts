@@ -6,6 +6,8 @@ import Swal from 'sweetalert2';
 import { FormBuilder, FormGroup, Validators, FormControl } from '@angular/forms';
 import { User } from "../models/user";
 import { UserService } from "../services/user/user.service";
+import { Secteur } from "../models/secteur";
+import { SecteurService } from "../services/secteur/secteur.service";
 
 @Component({
   selector: 'app-table-role',
@@ -16,13 +18,15 @@ export class TableRoleComponent implements OnInit {
 
   listRoles: Role[] = [];
   listUsers: User[] = [];
-  newRole: Role = new Role();
+  listSecteurs: Secteur[] = [];
+  newUser: User = new User();
   myForm: FormGroup;
 
   constructor(private router: Router,
     private roleService: RoleService,
     private formBuilder: FormBuilder,
-    private userService: UserService) { }
+    private userService: UserService,
+    private secteurService: SecteurService) { }
 
   ngOnInit() {
     this.roleService.getAll().subscribe(data => {
@@ -31,8 +35,17 @@ export class TableRoleComponent implements OnInit {
     this.userService.getAll().subscribe(data => {
       this.listUsers = data;
     });
+    this.secteurService.getAll().subscribe(data => {
+      this.listSecteurs = data;
+    });
     this.myForm = this.formBuilder.group({
-      libelleRole: ['', Validators.required],
+      nomUser: ['', Validators.required],
+      prenomUser: ['', Validators.required],
+      emailUser: ['', Validators.required],
+      loginUser: ['', Validators.required],
+      pwdUser: ['', Validators.required],
+      secteurUser: ['', Validators.required],
+      roleUser: ['', Validators.required],
     })
   }
 
@@ -63,16 +76,15 @@ export class TableRoleComponent implements OnInit {
             })
           }
         })
-
       }
     })
   }
 
-  ajoutRole() {
-    this.roleService.addRole(this.newRole).subscribe(res => {
+  ajoutUser() {
+    this.userService.addUser(this.newUser).subscribe(res => {
       if (res) {
         Swal.fire({
-          title: 'Rôle ajouté!',
+          title: 'Utilisateur ajouté!',
           icon: 'success',
           focusConfirm: true,
           confirmButtonText: 'OK',

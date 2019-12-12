@@ -62,4 +62,8 @@ export class UpdateEnclosComponent implements OnInit {
     });
   }
 
+  byIdSecteur(s1: Secteur, s2: Secteur) {
+    return s1['idSecteur'] === s2['idSecteur'];
+  }
+
 }

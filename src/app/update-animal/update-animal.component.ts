@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import Swal from 'sweetalert2'
+import Swal from 'sweetalert2';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Enclos } from '../models/enclos';
 import { EnclosService } from "../services/enclos/enclos.service";
@@ -69,6 +69,14 @@ export class UpdateAnimalComponent implements OnInit {
         })
       }
     });
+  }
+
+  byIdEnclos(e1: Enclos, e2: Enclos) {
+    return e1['idEnclos'] === e2['idEnclos'];
+  }
+
+  byIdNourriture(n1: Nourriture, n2: Nourriture) {
+    return n1['idNourriture'] === n2['idNourriture'];
   }
 
 }
