@@ -32,7 +32,7 @@ export class UpdateEnclosComponent implements OnInit {
     });
     this.secteurService.getAll().subscribe(data => {
       this.listSecteurs = data;
-    })
+    });
     this.myForm = this.formBuilder.group({
       nomEnclos: ['', Validators.required],
       capaciteEnclos: ['', Validators.required],

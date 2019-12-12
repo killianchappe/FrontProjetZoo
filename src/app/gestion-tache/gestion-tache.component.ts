@@ -18,6 +18,7 @@ export class GestionTacheComponent implements OnInit {
 
   listUsers: User[] = [];
   listEtats: Etat[] = [];
+  listTaches: Tache[] = [];
   newTache: Tache = new Tache();
   myFormTache: FormGroup;
 
@@ -33,6 +34,9 @@ export class GestionTacheComponent implements OnInit {
     });
     this.etatService.getAll().subscribe(data => {
       this.listEtats = data;
+    });
+    this.tacheService.getAll().subscribe(data => {
+      this.listTaches = data;
     });
     this.myFormTache = this.formBuilder.group({
       libelleTache: ['', Validators.required],
@@ -64,5 +68,26 @@ export class GestionTacheComponent implements OnInit {
       }
     });
   }
+
+  deleteTache(id: number, index) {
+    Swal.fire({
+      title: 'Voulez-vous vraiment faire cela?',
+      icon: 'question',
+      showCancelButton: true,
+      showCloseButton: true,
+      focusConfirm: true,
+      confirmButtonText: 'Confirmer',
+      cancelButtonText: 'Annuler'
+    }).then((result) => {
+      if (result.value) {
+        this.tacheService.deleteTache(id).subscribe(res => {
+          if (res) {
+            this.ngOnInit();
+          }
+        })
+      }
+    })
+  }
+
 
 }

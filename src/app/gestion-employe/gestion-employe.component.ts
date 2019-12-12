@@ -40,9 +40,14 @@ export class GestionEmployeComponent implements OnInit {
         this.userService.deleteUser(id).subscribe(res => {
           if (res) {
             this.ngOnInit();
+          } else {
+            Swal.fire({
+              title: 'Vous ne pouvez pas faire ça : cet employé a des tâches en cours!',
+              icon: 'warning',
+              confirmButtonText: 'OK',
+            })
           }
         })
-
       }
     })
   }

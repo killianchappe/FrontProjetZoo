@@ -5,13 +5,7 @@
                 <div class="nav-tabs-wrapper">
                     <ul class="nav nav-tabs" data-tabs="tabs">
                         <li class="nav-item">
-                            <a class="nav-link active" href="#planning-employe" data-toggle="tab">
-                                <i class="material-icons">today</i> Planning par employé
-                                <div class="ripple-container"></div>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#table-tache" data-toggle="tab">
+                            <a class="nav-link active" href="#table-tache" data-toggle="tab">
                                 <i class="material-icons">assignment</i> Liste des tâches
                                 <div class="ripple-container"></div>
                             </a>
@@ -22,17 +16,71 @@
                                 <div class="ripple-container"></div>
                             </a>
                         </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#planning-employe" data-toggle="tab">
+                                <i class="material-icons">today</i> Planning par employé
+                                <div class="ripple-container"></div>
+                            </a>
+                        </li>
                     </ul>
                 </div>
             </div>
         </div>
         <div class="card-body myCard">
             <div class="tab-content myCard">
-                <div class="tab-pane active myCard" id="planning-employe">
-                    <h6>A FAIRE 1</h6>
-                </div>
-                <div class="tab-pane myCard" id="table-tache">
-                    <h6>A FAIRE 2</h6>
+                <div class="tab-pane active myCard" id="table-tache">
+                    <div class="col-md-12 myCard">
+                        <div class="card">
+                            <div class="card-body myCard2">
+                                <div class="table-responsive">
+                                    <table class="table">
+                                        <thead class=" text-primary">
+                                            <th>
+                                                Libellé
+                                            </th>
+                                            <th>
+                                                Commentaire
+                                            </th>
+                                            <th>
+                                                Date
+                                            </th>
+                                            <th>
+                                                Durée
+                                            </th>
+                                            <th>
+                                                Employé associé
+                                            </th>
+                                            <th>
+                                                Etat
+                                            </th>
+                                            <th>
+                                            </th>
+                                            <th>
+                                            </th>
+                                        </thead>
+                                        <tbody>
+                                            <tr *ngFor="let tache of listTaches">
+                                                <td>{{tache.libelleTache}}</td>
+                                                <td>{{tache.commentaireTache}}</td>
+                                                <td>{{tache.dateTache|date:"dd/MM/yyyy hh:mm"}}</td>
+                                                <td>{{tache.dureeTache}} h</td>
+                                                <td>{{tache.userTache.nomUser}} {{tache.userTache.prenomUser}}</td>
+                                                <td>{{tache.etatTache.libelleEtat}}</td>
+                                                <td><button type="button" [routerLink]="['/updatetache',tache.idTache]"
+                                                        class="btn btn-success"><i class="material-icons">autorenew</i>
+                                                        Modifier</button>
+                                                </td>
+                                                <td><button type="button" (click)="deleteTache(tache.idTache, i)"
+                                                        class="btn btn-warning"><i class="material-icons">delete</i>
+                                                        Supprimer</button>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
                 <div class="tab-pane myCard" id="ajout-tache">
                     <div class="container">
@@ -85,6 +133,9 @@
                             </div>
                         </div>
                     </div>
+                </div>
+                <div class="tab-pane myCard" id="planning-employe">
+                    <h6>A FAIRE</h6>
                 </div>
             </div>
         </div>

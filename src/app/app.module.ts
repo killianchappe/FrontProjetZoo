@@ -20,6 +20,7 @@ import { UpdateEnclosComponent } from './update-enclos/update-enclos.component';
 import { UpdateAnimalComponent } from './update-animal/update-animal.component';
 import { UpdateLoginPwdComponent } from './update-login-pwd/update-login-pwd.component';
 import { UpdateEmployeComponent } from './update-employe/update-employe.component';
+import { UpdateTacheComponent } from './update-tache/update-tache.component';
 
 @NgModule({
   declarations: [
@@ -40,6 +41,7 @@ import { UpdateEmployeComponent } from './update-employe/update-employe.componen
     UpdateAnimalComponent,
     UpdateLoginPwdComponent,
     UpdateEmployeComponent,
+    UpdateTacheComponent,
   ],
   imports: [
     BrowserModule,

@@ -5,13 +5,7 @@
                 <div class="nav-tabs-wrapper">
                     <ul class="nav nav-tabs" data-tabs="tabs">
                         <li class="nav-item">
-                            <a class="nav-link active" href="#table-role" data-toggle="tab">
-                                <i class="material-icons">person</i> Liste des rôles
-                                <div class="ripple-container"></div>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#logAndPwd" data-toggle="tab">
+                            <a class="nav-link active" href="#logAndPwd" data-toggle="tab">
                                 <i class="material-icons">lock</i> Login & Password
                                 <div class="ripple-container"></div>
                             </a>
@@ -28,68 +22,19 @@
                                 <div class="ripple-container"></div>
                             </a>
                         </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#table-role" data-toggle="tab">
+                                <i class="material-icons">person</i> Liste des rôles
+                                <div class="ripple-container"></div>
+                            </a>
+                        </li>
                     </ul>
                 </div>
             </div>
         </div>
         <div class="card-body myCard">
             <div class="tab-content myCard">
-                <div class="tab-pane active myCard" id="table-role">
-                    <div class="col-md-12 myCard">
-                        <div class="card">
-                            <div class="card-body myCard2">
-                                <div class="table-responsive">
-                                    <table class="table">
-                                        <thead class=" text-success">
-                                            <th>
-                                                Libellé du rôle
-                                            </th>
-                                            <th>
-                                                Informations
-                                            </th>
-                                        </thead>
-                                        <tbody>
-                                            <tr>
-                                                <td>
-                                                    admin
-                                                </td>
-                                                <td>
-                                                    L'admin a accès à toutes les fonctionnalités de l'application. Il
-                                                    est unique et est le seul à pouvoir promouvoir un employé en
-                                                    manager. Il a aussi accès aux mots de passe des utilisateurs.
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td>
-                                                    manager
-                                                </td>
-                                                <td>
-                                                    Le manager a accès à la majeure partie des fonctionnalités de
-                                                    l'application. Il peut gérer les stocks de nourritures, les animaux,
-                                                    les enclos, les secteurs, les employés et attribuer des
-                                                    tâches. Il ne peut cependant pas
-                                                    gérer les informations de ses collègues managers. Il n'a pas accès
-                                                    aux mots de passe.
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td>
-                                                    employe
-                                                </td>
-                                                <td>
-                                                    L'employé n'a pas accès à la gestion du personnel et des tâches. Il
-                                                    peut cependant consulter son planning de tâches et modifier le stock
-                                                    de nourriture.
-                                                </td>
-                                            </tr>
-                                        </tbody>
-                                    </table>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="tab-pane myCard" id="logAndPwd">
+                <div class="tab-pane active myCard" id="logAndPwd">
                     <div class="col-md-12 myCard">
                         <div class="card">
                             <div class="card-body myCard2">
@@ -238,6 +183,61 @@
                                                 </td>
                                                 <td *ngIf="user.roleUser.libelleRole == 'admin'">
                                                     <h6 class="text-danger myText">IMPOSSIBLE : ADMIN</h6>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="tab-pane myCard" id="table-role">
+                    <div class="col-md-12 myCard">
+                        <div class="card">
+                            <div class="card-body myCard2">
+                                <div class="table-responsive">
+                                    <table class="table">
+                                        <thead class=" text-success">
+                                            <th>
+                                                Libellé du rôle
+                                            </th>
+                                            <th>
+                                                Informations
+                                            </th>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td>
+                                                    admin
+                                                </td>
+                                                <td>
+                                                    L'admin a accès à toutes les fonctionnalités de l'application. Il
+                                                    est unique et est le seul à pouvoir promouvoir un employé en
+                                                    manager. Il a aussi accès aux mots de passe des utilisateurs.
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    manager
+                                                </td>
+                                                <td>
+                                                    Le manager a accès à la majeure partie des fonctionnalités de
+                                                    l'application. Il peut gérer les stocks de nourritures, les animaux,
+                                                    les enclos, les secteurs, les employés et attribuer des
+                                                    tâches. Il ne peut cependant pas
+                                                    gérer les informations de ses collègues managers. Il n'a pas accès
+                                                    aux mots de passe.
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    employe
+                                                </td>
+                                                <td>
+                                                    L'employé n'a pas accès à la gestion du personnel et des tâches. Il
+                                                    peut cependant consulter son planning de tâches et modifier le stock
+                                                    de nourriture.
                                                 </td>
                                             </tr>
                                         </tbody>

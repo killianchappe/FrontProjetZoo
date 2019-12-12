@@ -13,6 +13,7 @@ import { UpdateEnclosComponent } from "./update-enclos/update-enclos.component";
 import { UpdateAnimalComponent } from "./update-animal/update-animal.component";
 import { UpdateLoginPwdComponent } from "./update-login-pwd/update-login-pwd.component";
 import { UpdateEmployeComponent } from "./update-employe/update-employe.component";
+import { UpdateTacheComponent } from "./update-tache/update-tache.component";
 
 const routes: Routes = [
   {
@@ -66,6 +67,10 @@ const routes: Routes = [
   {
     path: "updateemploye/:id",
     component: UpdateEmployeComponent,
+  },
+  {
+    path: "updatetache/:id",
+    component: UpdateTacheComponent,
   },
 ];
 
