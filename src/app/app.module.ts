@@ -21,6 +21,9 @@ import { UpdateAnimalComponent } from './update-animal/update-animal.component';
 import { UpdateLoginPwdComponent } from './update-login-pwd/update-login-pwd.component';
 import { UpdateEmployeComponent } from './update-employe/update-employe.component';
 import { UpdateTacheComponent } from './update-tache/update-tache.component';
+import { SigninComponent } from './signin/signin.component';
+import { RegisterComponent } from './register/register.component';
+import { JwtModule } from '@auth0/angular-jwt';
 
 @NgModule({
   declarations: [
@@ -42,13 +45,16 @@ import { UpdateTacheComponent } from './update-tache/update-tache.component';
     UpdateLoginPwdComponent,
     UpdateEmployeComponent,
     UpdateTacheComponent,
+    SigninComponent,
+    RegisterComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    JwtModule
   ],
   providers: [],
   bootstrap: [AppComponent]

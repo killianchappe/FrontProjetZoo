@@ -1,17 +1,13 @@
-import { Component } from '@angular/core';
+import { Injectable } from '@angular/core';
 import { Router, NavigationStart } from '@angular/router';
 import { JwtHelperService } from '@auth0/angular-jwt';
-import { Role } from './models/role';
+import { Role } from '../../models/role';
 
-@Component({
-  selector: 'app-root',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss']
+@Injectable({
+  providedIn: 'root'
 })
-export class AppComponent {
+export class TestRoleService {
 
-  title = 'FrontProjetZoo';
-  isLogin: Boolean = false;
   isAdmin: Boolean = false;
   isManager: Boolean = false;
   role: Role;
@@ -25,7 +21,6 @@ export class AppComponent {
         } catch (error) {
         }
         try {
-          console.log(this.role.idRole)
           if (this.role.idRole == 1) {
             this.isAdmin = true;
             this.isManager = true;
@@ -38,18 +33,16 @@ export class AppComponent {
           }
         } catch (error) {
         }
-        console.log(event['url'])
-        if (event['url'] == '/signin' || event['url'] == '/register') {
-          this.isLogin = true;
-        } else {
-          this.isLogin = false;
-        }
       };
     });
+  }
 
+  getValuesAdmin() {
+    return this.isAdmin;
+  }
+
+  getValuesManager() {
+    return this.isManager;
   }
 
 }
-
-
-

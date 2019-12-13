@@ -99,28 +99,36 @@
                                 <div class="tab-pane" id="ajout-secteur">
 
                                     <!-- Ajouter Secteur -->
-                                    <div class="container">
-                                        <div class="row">
-                                            <div class="col-sm-3">
-                                            </div>
-                                            <div class="col-sm-6">
-                                                <form [formGroup]="myFormSecteur" (ngSubmit)="ajoutSecteur()"
-                                                    class="was-validated myForm">
-                                                    <div class="form-group">
-                                                        <h3 class="text-primary">Ajouter un nouveau secteur</h3>
-                                                        <h6>Nom du secteur :</h6>
-                                                        <input type="text" class="form-control myInput" id="nomSecteur"
-                                                            formControlName="nomSecteur"
-                                                            [(ngModel)]="newSecteur.nomSecteur"
-                                                            placeholder="exemple : Fauves" required>
+                                    <div class="col-md-12 myCard">
+                                        <div class="card">
+                                            <div class="card-body myCard2">
+                                                <div class="container">
+                                                    <div class="row">
+                                                        <div class="col-sm-3">
+                                                        </div>
+                                                        <div class="col-sm-6">
+                                                            <form [formGroup]="myFormSecteur"
+                                                                (ngSubmit)="ajoutSecteur()"
+                                                                class="was-validated myForm">
+                                                                <div class="form-group">
+                                                                    <h3 class="text-primary">Ajouter un nouveau secteur
+                                                                    </h3>
+                                                                    <h6>Nom du secteur :</h6>
+                                                                    <input type="text" class="form-control myInput"
+                                                                        id="nomSecteur" formControlName="nomSecteur"
+                                                                        [(ngModel)]="newSecteur.nomSecteur"
+                                                                        placeholder="exemple : Fauves" required>
+                                                                </div>
+                                                                <button type="submit" class="btn btn-success"
+                                                                    [disabled]="myFormSecteur.invalid">Ajouter</button>
+                                                                <button type="button" (click)="onResetSecteur()"
+                                                                    class="btn btn-warning">Réinitialiser</button>
+                                                            </form>
+                                                        </div>
+                                                        <div class="col-sm-3">
+                                                        </div>
                                                     </div>
-                                                    <button type="submit" class="btn btn-success"
-                                                        [disabled]="myFormSecteur.invalid">Ajouter</button>
-                                                    <button type="button" (click)="onResetSecteur()"
-                                                        class="btn btn-warning">Réinitialiser</button>
-                                                </form>
-                                            </div>
-                                            <div class="col-sm-3">
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
@@ -212,46 +220,54 @@
                                 <div class="tab-pane" id="ajout-enclos">
 
                                     <!-- Ajouter Enclos -->
-                                    <div class="container">
-                                        <div class="row">
-                                            <div class="col-sm-3">
-                                            </div>
-                                            <div class="col-sm-6">
-                                                <form [formGroup]="myFormEnclos" (ngSubmit)="ajoutEnclos()"
-                                                    class="was-validated">
-                                                    <h3 class="text-primary">Ajouter un nouvel enclos</h3>
-                                                    <h6>Nom de l'enclos</h6>
-                                                    <div class="form-group">
-                                                        <input type="text" class="form-control myInput" id="nomEnclos"
-                                                            formControlName="nomEnclos"
-                                                            [(ngModel)]="newEnclos.nomEnclos"
-                                                            placeholder="exemple : Tigres" required>
+                                    <div class="col-md-12 myCard">
+                                        <div class="card">
+                                            <div class="card-body myCard2">
+                                                <div class="container">
+                                                    <div class="row">
+                                                        <div class="col-sm-3">
+                                                        </div>
+                                                        <div class="col-sm-6">
+                                                            <form [formGroup]="myFormEnclos" (ngSubmit)="ajoutEnclos()"
+                                                                class="was-validated">
+                                                                <h3 class="text-primary">Ajouter un nouvel enclos</h3>
+                                                                <h6>Nom de l'enclos</h6>
+                                                                <div class="form-group">
+                                                                    <input type="text" class="form-control myInput"
+                                                                        id="nomEnclos" formControlName="nomEnclos"
+                                                                        [(ngModel)]="newEnclos.nomEnclos"
+                                                                        placeholder="exemple : Tigres" required>
+                                                                </div>
+                                                                <div class="form-group">
+                                                                    <h6>Capacité de l'enclos</h6>
+                                                                    <input type="number" class="form-control myInput"
+                                                                        id="capaciteEnclos"
+                                                                        formControlName="capaciteEnclos"
+                                                                        [(ngModel)]="newEnclos.capaciteEnclos"
+                                                                        placeholder="exemple : 10" required>
+                                                                </div>
+                                                                <div class="form-group">
+                                                                    <h6>Secteur de l'enclos :</h6>
+                                                                    <select class="form-control myInput"
+                                                                        id="secteurEnclos"
+                                                                        [(ngModel)]="newEnclos.secteurEnclos"
+                                                                        formControlName="secteurEnclos" required>
+                                                                        <option *ngFor="let secteur of listSecteurs;"
+                                                                            [ngValue]="secteur">
+                                                                            {{secteur.nomSecteur}}
+                                                                        </option>
+                                                                    </select>
+                                                                </div>
+                                                                <button type="submit" class="btn btn-success"
+                                                                    [disabled]="myFormEnclos.invalid">Ajouter</button>
+                                                                <button type="button" (click)="onResetEnclos()"
+                                                                    class="btn btn-warning">Réinitialiser</button>
+                                                            </form>
+                                                        </div>
+                                                        <div class="col-sm-3">
+                                                        </div>
                                                     </div>
-                                                    <div class="form-group">
-                                                        <h6>Capacité de l'enclos</h6>
-                                                        <input type="number" class="form-control myInput"
-                                                            id="capaciteEnclos" formControlName="capaciteEnclos"
-                                                            [(ngModel)]="newEnclos.capaciteEnclos"
-                                                            placeholder="exemple : 10" required>
-                                                    </div>
-                                                    <div class="form-group">
-                                                        <h6>Secteur de l'enclos :</h6>
-                                                        <select class="form-control myInput" id="secteurEnclos"
-                                                            [(ngModel)]="newEnclos.secteurEnclos"
-                                                            formControlName="secteurEnclos" required>
-                                                            <option *ngFor="let secteur of listSecteurs;"
-                                                                [ngValue]="secteur">
-                                                                {{secteur.nomSecteur}}
-                                                            </option>
-                                                        </select>
-                                                    </div>
-                                                    <button type="submit" class="btn btn-success"
-                                                        [disabled]="myFormEnclos.invalid">Ajouter</button>
-                                                    <button type="button" (click)="onResetEnclos()"
-                                                        class="btn btn-warning">Réinitialiser</button>
-                                                </form>
-                                            </div>
-                                            <div class="col-sm-3">
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
@@ -351,64 +367,73 @@
                                 <div class="tab-pane" id="ajout-animal">
 
                                     <!-- Ajouter Animal -->
-                                    <div class="container">
-                                        <div class="row">
-                                            <div class="col-sm-3">
-                                            </div>
-                                            <div class="col-sm-6">
-                                                <form [formGroup]="myFormAnimal" (ngSubmit)="ajoutAnimal()"
-                                                    class="was-validated">
-                                                    <h3 class="text-primary">Ajouter un nouvel animal</h3>
-                                                    <div class="form-group">
-                                                        <h6>Nom de l'animal :</h6>
-                                                        <input type="text" class="form-control myInput" id="nomAnimal"
-                                                            formControlName="nomAnimal"
-                                                            [(ngModel)]="newAnimal.nomAnimal"
-                                                            placeholder="exemple : Tigrou" required>
+                                    <div class="col-md-12 myCard">
+                                        <div class="card">
+                                            <div class="card-body myCard2">
+                                                <div class="container">
+                                                    <div class="row">
+                                                        <div class="col-sm-3">
+                                                        </div>
+                                                        <div class="col-sm-6">
+                                                            <form [formGroup]="myFormAnimal" (ngSubmit)="ajoutAnimal()"
+                                                                class="was-validated">
+                                                                <h3 class="text-primary">Ajouter un nouvel animal</h3>
+                                                                <div class="form-group">
+                                                                    <h6>Nom de l'animal :</h6>
+                                                                    <input type="text" class="form-control myInput"
+                                                                        id="nomAnimal" formControlName="nomAnimal"
+                                                                        [(ngModel)]="newAnimal.nomAnimal"
+                                                                        placeholder="exemple : Tigrou" required>
+                                                                </div>
+                                                                <div class="form-group">
+                                                                    <h6>Espece de l'animal :</h6>
+                                                                    <input type="text" class="form-control myInput"
+                                                                        id="especeAnimal" formControlName="especeAnimal"
+                                                                        [(ngModel)]="newAnimal.especeAnimal"
+                                                                        placeholder="exemple : Tigre" required>
+                                                                </div>
+                                                                <div class="form-group">
+                                                                    <h6>Age de l'animal</h6>
+                                                                    <input type="number" class="form-control myInput"
+                                                                        id="ageAnimal" formControlName="ageAnimal"
+                                                                        [(ngModel)]="newAnimal.ageAnimal"
+                                                                        placeholder="exemple : 5" required>
+                                                                </div>
+                                                                <div class="form-group">
+                                                                    <h6>Enclos de l'animal :</h6>
+                                                                    <select class="form-control myInput"
+                                                                        id="enclosAnimal"
+                                                                        [(ngModel)]="newAnimal.enclosAnimal"
+                                                                        formControlName="enclosAnimal" required>
+                                                                        <option *ngFor="let enclos of listEnclos;"
+                                                                            [ngValue]="enclos">
+                                                                            {{enclos.nomEnclos}}
+                                                                        </option>
+                                                                    </select>
+                                                                </div>
+                                                                <div class="form-group">
+                                                                    <h6>Régime alimentaire :</h6>
+                                                                    <select class="form-control myInput"
+                                                                        id="nourritureAnimal"
+                                                                        [(ngModel)]="newAnimal.nourritureAnimal"
+                                                                        formControlName="nourritureAnimal" required>
+                                                                        <option
+                                                                            *ngFor="let nourriture of listNourritures;"
+                                                                            [ngValue]="nourriture">
+                                                                            {{nourriture.nomNourriture}}
+                                                                        </option>
+                                                                    </select>
+                                                                </div>
+                                                                <button type="submit" class="btn btn-success"
+                                                                    [disabled]="myFormAnimal.invalid">Ajouter</button>
+                                                                <button type="button" (click)="onResetAnimal()"
+                                                                    class="btn btn-warning">Réinitialiser</button>
+                                                            </form>
+                                                        </div>
+                                                        <div class="col-sm-3">
+                                                        </div>
                                                     </div>
-                                                    <div class="form-group">
-                                                        <h6>Espece de l'animal :</h6>
-                                                        <input type="text" class="form-control myInput"
-                                                            id="especeAnimal" formControlName="especeAnimal"
-                                                            [(ngModel)]="newAnimal.especeAnimal"
-                                                            placeholder="exemple : Tigre" required>
-                                                    </div>
-                                                    <div class="form-group">
-                                                        <h6>Age de l'animal</h6>
-                                                        <input type="number" class="form-control myInput" id="ageAnimal"
-                                                            formControlName="ageAnimal"
-                                                            [(ngModel)]="newAnimal.ageAnimal" placeholder="exemple : 5"
-                                                            required>
-                                                    </div>
-                                                    <div class="form-group">
-                                                        <h6>Enclos de l'animal :</h6>
-                                                        <select class="form-control myInput" id="enclosAnimal"
-                                                            [(ngModel)]="newAnimal.enclosAnimal"
-                                                            formControlName="enclosAnimal" required>
-                                                            <option *ngFor="let enclos of listEnclos;"
-                                                                [ngValue]="enclos">
-                                                                {{enclos.nomEnclos}}
-                                                            </option>
-                                                        </select>
-                                                    </div>
-                                                    <div class="form-group">
-                                                        <h6>Régime alimentaire :</h6>
-                                                        <select class="form-control myInput" id="nourritureAnimal"
-                                                            [(ngModel)]="newAnimal.nourritureAnimal"
-                                                            formControlName="nourritureAnimal" required>
-                                                            <option *ngFor="let nourriture of listNourritures;"
-                                                                [ngValue]="nourriture">
-                                                                {{nourriture.nomNourriture}}
-                                                            </option>
-                                                        </select>
-                                                    </div>
-                                                    <button type="submit" class="btn btn-success"
-                                                        [disabled]="myFormAnimal.invalid">Ajouter</button>
-                                                    <button type="button" (click)="onResetAnimal()"
-                                                        class="btn btn-warning">Réinitialiser</button>
-                                                </form>
-                                            </div>
-                                            <div class="col-sm-3">
+                                                </div>
                                             </div>
                                         </div>
                                     </div>

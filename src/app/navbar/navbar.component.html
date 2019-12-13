@@ -1,7 +1,7 @@
 <nav class="navbar navbar-expand-lg navbar-transparent navbar-absolute fixed-top myNavbar">
     <div class="container-fluid">
         <div class="navbar-wrapper">
-            <a class="navbar-brand" href="...">TEXTE ICI</a>
+            <a class="navbar-brand" href="...">BONJOUR {{prenom}}</a>
         </div>
         <button class="navbar-toggler" type="button" data-toggle="collapse" aria-controls="navigation-index"
             aria-expanded="false" aria-label="Toggle navigation">
@@ -20,10 +20,12 @@
                             Account
                         </p>
                     </a>
-                    <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownProfile">
-                        <a class="dropdown-item myDropdown-item" href="...">Mon Compte</a>
+                    <div class="dropdown-menu dropdown-menu-right myBackG" aria-labelledby="navbarDropdownProfile">
+                        <button type="button" [routerLink]="['/compte']" class="btn btn-success myButton"><i
+                                class="material-icons">face</i> Mon compte</button>
                         <div class="dropdown-divider"></div>
-                        <a class="dropdown-item myDropdown-item" href="...">Deconnexion</a>
+                        <button type="button" (click)="logout()" class="btn btn-success myButton"><i
+                                class="material-icons">exit_to_app</i> Deconnexion</button>
                     </div>
                 </li>
             </ul>

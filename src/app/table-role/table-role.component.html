@@ -75,72 +75,82 @@
                     </div>
                 </div>
                 <div class="tab-pane" id="ajout-user">
-                    <div class="container">
-                        <div class="row">
-                            <div class="col-sm-3">
-                            </div>
-                            <div class="col-sm-6">
-                                <form [formGroup]="myForm" (ngSubmit)="ajoutUser(newUser)" class="was-validated">
-                                    <h3 class="text-primary">Ajouter un nouvel utilisateur</h3>
-                                    <div class="form-group">
-                                        <h6>Nom :</h6>
-                                        <input type="text" class="form-control myInput" id="nomUser"
-                                            formControlName="nomUser" [(ngModel)]="newUser.nomUser"
-                                            placeholder="exemple : Smith" required>
+                    <div class="col-md-12 myCard">
+                        <div class="card">
+                            <div class="card-body myCard2">
+                                <div class="container">
+                                    <div class="row">
+                                        <div class="col-sm-3">
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <form [formGroup]="myForm" (ngSubmit)="ajoutUser(newUser)"
+                                                class="was-validated">
+                                                <h3 class="text-primary">Ajouter un nouvel utilisateur</h3>
+                                                <div class="form-group">
+                                                    <h6>Nom :</h6>
+                                                    <input type="text" class="form-control myInput" id="nomUser"
+                                                        formControlName="nomUser" [(ngModel)]="newUser.nomUser"
+                                                        placeholder="exemple : Smith" required>
+                                                </div>
+                                                <div class="form-group">
+                                                    <h6>Prénom :</h6>
+                                                    <input type="text" class="form-control myInput" id="prenomUser"
+                                                        formControlName="prenomUser" [(ngModel)]="newUser.prenomUser"
+                                                        placeholder="exemple : John" required>
+                                                </div>
+                                                <div class="form-group">
+                                                    <h6>Email :</h6>
+                                                    <input type="email" class="form-control myInput" id="emailUser"
+                                                        formControlName="emailUser" [(ngModel)]="newUser.emailUser"
+                                                        placeholder="exemple : john.smith@gmail.com" required>
+                                                </div>
+                                                <div class="form-group">
+                                                    <h6>Login :</h6>
+                                                    <input type="text" class="form-control myInput" id="loginUser"
+                                                        formControlName="loginUser" [(ngModel)]="newUser.loginUser"
+                                                        placeholder="exemple : jsmith" required>
+                                                </div>
+                                                <div class="form-group">
+                                                    <h6>Password :</h6>
+                                                    <input type="text" class="form-control myInput" id="pwdUser"
+                                                        formControlName="pwdUser" [(ngModel)]="newUser.pwdUser"
+                                                        placeholder="exemple : 123456789" required>
+                                                </div>
+                                                <div class="form-group">
+                                                    <h6>Secteur :</h6>
+                                                    <select class="form-control myInput" id="secteurUser"
+                                                        [(ngModel)]="newUser.secteurUser" formControlName="secteurUser"
+                                                        required>
+                                                        <option *ngFor="let secteur of listSecteurs;"
+                                                            [ngValue]="secteur">
+                                                            {{secteur.nomSecteur}}
+                                                        </option>
+                                                    </select>
+                                                </div>
+                                                <div class="form-group">
+                                                    <h6>Rôle :</h6>
+                                                    <select class="form-control myInput" id="roleUser"
+                                                        [(ngModel)]="newUser.roleUser" formControlName="roleUser"
+                                                        required>
+                                                        <!-- ERREUR DANS LA CONSOLE ICI MAIS FONCTIONNE CORRECTEMENT => libelleRole undefined -->
+                                                        <option [ngValue]="listRoles[1]">
+                                                            {{listRoles[1].libelleRole}}
+                                                        </option>
+                                                        <option [ngValue]="listRoles[2]">
+                                                            {{listRoles[2].libelleRole}}
+                                                        </option>
+                                                    </select>
+                                                </div>
+                                                <button type="submit" class="btn btn-success"
+                                                    [disabled]="myForm.invalid">Ajouter</button>
+                                                <button type="button" (click)="onReset()"
+                                                    class="btn btn-warning">Réinitialiser</button>
+                                            </form>
+                                        </div>
+                                        <div class="col-sm-3">
+                                        </div>
                                     </div>
-                                    <div class="form-group">
-                                        <h6>Prénom :</h6>
-                                        <input type="text" class="form-control myInput" id="prenomUser"
-                                            formControlName="prenomUser" [(ngModel)]="newUser.prenomUser"
-                                            placeholder="exemple : John" required>
-                                    </div>
-                                    <div class="form-group">
-                                        <h6>Email :</h6>
-                                        <input type="email" class="form-control myInput" id="emailUser"
-                                            formControlName="emailUser" [(ngModel)]="newUser.emailUser"
-                                            placeholder="exemple : john.smith@gmail.com" required>
-                                    </div>
-                                    <div class="form-group">
-                                        <h6>Login :</h6>
-                                        <input type="text" class="form-control myInput" id="loginUser"
-                                            formControlName="loginUser" [(ngModel)]="newUser.loginUser"
-                                            placeholder="exemple : jsmith" required>
-                                    </div>
-                                    <div class="form-group">
-                                        <h6>Password :</h6>
-                                        <input type="text" class="form-control myInput" id="pwdUser"
-                                            formControlName="pwdUser" [(ngModel)]="newUser.pwdUser"
-                                            placeholder="exemple : 123456789" required>
-                                    </div>
-                                    <div class="form-group">
-                                        <h6>Secteur :</h6>
-                                        <select class="form-control myInput" id="secteurUser"
-                                            [(ngModel)]="newUser.secteurUser" formControlName="secteurUser" required>
-                                            <option *ngFor="let secteur of listSecteurs;" [ngValue]="secteur">
-                                                {{secteur.nomSecteur}}
-                                            </option>
-                                        </select>
-                                    </div>
-                                    <div class="form-group">
-                                        <h6>Rôle :</h6>
-                                        <select class="form-control myInput" id="roleUser"
-                                            [(ngModel)]="newUser.roleUser" formControlName="roleUser" required>
-                                            <!-- ERREUR DANS LA CONSOLE ICI MAIS FONCTIONNE CORRECTEMENT => libelleRole undefined -->
-                                            <option [ngValue]="listRoles[1]">
-                                                {{listRoles[1].libelleRole}}
-                                            </option>
-                                            <option [ngValue]="listRoles[2]">
-                                                {{listRoles[2].libelleRole}}
-                                            </option>
-                                        </select>
-                                    </div>
-                                    <button type="submit" class="btn btn-success"
-                                        [disabled]="myForm.invalid">Ajouter</button>
-                                    <button type="button" (click)="onReset()"
-                                        class="btn btn-warning">Réinitialiser</button>
-                                </form>
-                            </div>
-                            <div class="col-sm-3">
+                                </div>
                             </div>
                         </div>
                     </div>

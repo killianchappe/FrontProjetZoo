@@ -43,46 +43,55 @@
                                 <div class="tab-pane active" id="update-secteur">
 
                                     <!-- Update Enclos -->
-                                    <div class="container">
-                                        <div class="row">
-                                            <div class="col-sm-3">
-                                            </div>
-                                            <div class="col-sm-6">
-                                                <form [formGroup]="myForm" (ngSubmit)="updateEnclos(enclosCourant)"
-                                                    class="was-validated">
-                                                    <h3 class="text-primary">Modifier un enclos</h3>
-                                                    <p>Nom de l'enclos</p>
-                                                    <div class="form-group">
-                                                        <input type="text" class="form-control myInput" id="nomEnclos"
-                                                            formControlName="nomEnclos"
-                                                            [(ngModel)]="enclosCourant.nomEnclos"
-                                                            placeholder="exemple : Tigres" required>
+                                    <div class="col-md-12 myCard">
+                                        <div class="card">
+                                            <div class="card-body myCard2">
+                                                <div class="container">
+                                                    <div class="row">
+                                                        <div class="col-sm-3">
+                                                        </div>
+                                                        <div class="col-sm-6">
+                                                            <form [formGroup]="myForm"
+                                                                (ngSubmit)="updateEnclos(enclosCourant)"
+                                                                class="was-validated">
+                                                                <h3 class="text-primary">Modifier un enclos</h3>
+                                                                <p>Nom de l'enclos</p>
+                                                                <div class="form-group">
+                                                                    <input type="text" class="form-control myInput"
+                                                                        id="nomEnclos" formControlName="nomEnclos"
+                                                                        [(ngModel)]="enclosCourant.nomEnclos"
+                                                                        placeholder="exemple : Tigres" required>
+                                                                </div>
+                                                                <div class="form-group">
+                                                                    <p>Capacité de l'enclos</p>
+                                                                    <input type="number" class="form-control myInput"
+                                                                        id="capaciteEnclos"
+                                                                        formControlName="capaciteEnclos"
+                                                                        [(ngModel)]="enclosCourant.capaciteEnclos"
+                                                                        placeholder="exemple : 10" required>
+                                                                </div>
+                                                                <div class="form-group">
+                                                                    <p>Secteur de l'enclos :</p>
+                                                                    <select [compareWith]="byIdSecteur"
+                                                                        class="form-control myInput" id="secteurEnclos"
+                                                                        [(ngModel)]="enclosCourant.secteurEnclos"
+                                                                        formControlName="secteurEnclos" required>
+                                                                        <option *ngFor="let secteur of listSecteurs;"
+                                                                            [ngValue]="secteur">
+                                                                            {{secteur.nomSecteur}}
+                                                                        </option>
+                                                                    </select>
+                                                                </div>
+                                                                <button type="submit" class="btn btn-success"
+                                                                    [disabled]="myForm.invalid">Modifier</button>
+                                                                <button type="button" (click)="onReset()"
+                                                                    class="btn btn-warning">Réinitialiser</button>
+                                                            </form>
+                                                        </div>
+                                                        <div class="col-sm-3">
+                                                        </div>
                                                     </div>
-                                                    <div class="form-group">
-                                                        <p>Capacité de l'enclos</p>
-                                                        <input type="number" class="form-control myInput"
-                                                            id="capaciteEnclos" formControlName="capaciteEnclos"
-                                                            [(ngModel)]="enclosCourant.capaciteEnclos"
-                                                            placeholder="exemple : 10" required>
-                                                    </div>
-                                                    <div class="form-group">
-                                                        <p>Secteur de l'enclos :</p>
-                                                        <select [compareWith]="byIdSecteur" class="form-control myInput" id="secteurEnclos"
-                                                            [(ngModel)]="enclosCourant.secteurEnclos"
-                                                            formControlName="secteurEnclos" required>
-                                                            <option *ngFor="let secteur of listSecteurs;"
-                                                                [ngValue]="secteur">
-                                                                {{secteur.nomSecteur}}
-                                                            </option>
-                                                        </select>
-                                                    </div>
-                                                    <button type="submit" class="btn btn-success"
-                                                        [disabled]="myForm.invalid">Modifier</button>
-                                                    <button type="button" (click)="onReset()"
-                                                        class="btn btn-warning">Réinitialiser</button>
-                                                </form>
-                                            </div>
-                                            <div class="col-sm-3">
+                                                </div>
                                             </div>
                                         </div>
                                     </div>

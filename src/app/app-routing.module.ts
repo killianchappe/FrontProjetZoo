@@ -14,43 +14,56 @@ import { UpdateAnimalComponent } from "./update-animal/update-animal.component";
 import { UpdateLoginPwdComponent } from "./update-login-pwd/update-login-pwd.component";
 import { UpdateEmployeComponent } from "./update-employe/update-employe.component";
 import { UpdateTacheComponent } from "./update-tache/update-tache.component";
+import { SigninComponent } from "./signin/signin.component";
+import { RegisterComponent } from "./register/register.component";
+import { AuthGuardService } from "./services/auth-guard/auth-guard.service";
+
 
 const routes: Routes = [
   {
     path: "role",
     component: TableRoleComponent,
+    canActivate: [AuthGuardService]
   },
   {
     path: "employe",
     component: GestionEmployeComponent,
+    canActivate: [AuthGuardService]
   },
   {
     path: "tache",
     component: GestionTacheComponent,
+    canActivate: [AuthGuardService]
   },
   {
     path: "zoo",
     component: GestionZooComponent,
+    canActivate: [AuthGuardService]
   },
   {
     path: "stock",
     component: GestionStockComponent,
+    canActivate: [AuthGuardService]
   },
   {
     path: "compte",
     component: CompteComponent,
+    canActivate: [AuthGuardService]
   },
   {
     path: "home",
     component: HomeComponent,
+    canActivate: [AuthGuardService]
   },
   {
     path: "updatestock/:id",
     component: UpdateStockComponent,
+    canActivate: [AuthGuardService]
   },
   {
     path: "updatesecteur/:id",
     component: UpdateSecteurComponent,
+    canActivate: [AuthGuardService]
   },
   {
     path: "updateenclos/:id",
@@ -59,18 +72,30 @@ const routes: Routes = [
   {
     path: "updateanimal/:id",
     component: UpdateAnimalComponent,
+    canActivate: [AuthGuardService]
   },
   {
     path: "updateloginpwd/:id",
     component: UpdateLoginPwdComponent,
+    canActivate: [AuthGuardService]
   },
   {
     path: "updateemploye/:id",
     component: UpdateEmployeComponent,
+    canActivate: [AuthGuardService]
   },
   {
     path: "updatetache/:id",
     component: UpdateTacheComponent,
+    canActivate: [AuthGuardService]
+  },
+  {
+    path: "signin",
+    component: SigninComponent,
+  },
+  {
+    path: "register",
+    component: RegisterComponent,
   },
 ];
 

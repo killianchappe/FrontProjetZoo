@@ -43,65 +43,75 @@
                                 <div class="tab-pane active" id="update-animal">
 
                                     <!-- Update Animal -->
-                                    <div class="container">
-                                        <div class="row">
-                                            <div class="col-sm-3">
-                                            </div>
-                                            <div class="col-sm-6">
-                                                <form [formGroup]="myForm" (ngSubmit)="updateAnimal(animalCourant)"
-                                                    class="was-validated">
-                                                    <h3 class="text-primary">Modifier un animal</h3>
-                                                    <div class="form-group">
-                                                        <p>Nom de l'animal :</p>
-                                                        <input type="text" class="form-control myInput" id="nomAnimal"
-                                                            formControlName="nomAnimal"
-                                                            [(ngModel)]="animalCourant.nomAnimal"
-                                                            placeholder="exemple : Tigrou" required>
+                                    <div class="col-md-12 myCard">
+                                        <div class="card">
+                                            <div class="card-body myCard2">
+                                                <div class="container">
+                                                    <div class="row">
+                                                        <div class="col-sm-3">
+                                                        </div>
+                                                        <div class="col-sm-6">
+                                                            <form [formGroup]="myForm"
+                                                                (ngSubmit)="updateAnimal(animalCourant)"
+                                                                class="was-validated">
+                                                                <h3 class="text-primary">Modifier un animal</h3>
+                                                                <div class="form-group">
+                                                                    <p>Nom de l'animal :</p>
+                                                                    <input type="text" class="form-control myInput"
+                                                                        id="nomAnimal" formControlName="nomAnimal"
+                                                                        [(ngModel)]="animalCourant.nomAnimal"
+                                                                        placeholder="exemple : Tigrou" required>
+                                                                </div>
+                                                                <div class="form-group">
+                                                                    <p>Espece de l'animal :</p>
+                                                                    <input type="text" class="form-control myInput"
+                                                                        id="especeAnimal" formControlName="especeAnimal"
+                                                                        [(ngModel)]="animalCourant.especeAnimal"
+                                                                        placeholder="exemple : Tigre" required>
+                                                                </div>
+                                                                <div class="form-group">
+                                                                    <p>Age de l'animal</p>
+                                                                    <input type="number" class="form-control myInput"
+                                                                        id="ageAnimal" formControlName="ageAnimal"
+                                                                        [(ngModel)]="animalCourant.ageAnimal"
+                                                                        placeholder="exemple : 5" required>
+                                                                </div>
+                                                                <div class="form-group">
+                                                                    <p>Enclos de l'animal :</p>
+                                                                    <select [compareWith]="byIdEnclos"
+                                                                        class="form-control myInput" id="enclosAnimal"
+                                                                        [(ngModel)]="animalCourant.enclosAnimal"
+                                                                        formControlName="enclosAnimal" required>
+                                                                        <option *ngFor="let enclos of listEnclos;"
+                                                                            [ngValue]="enclos">
+                                                                            {{enclos.nomEnclos}}
+                                                                        </option>
+                                                                    </select>
+                                                                </div>
+                                                                <div class="form-group">
+                                                                    <p>Régime alimentaire :</p>
+                                                                    <select [compareWith]="byIdNourriture"
+                                                                        class="form-control myInput"
+                                                                        id="nourritureAnimal"
+                                                                        [(ngModel)]="animalCourant.nourritureAnimal"
+                                                                        formControlName="nourritureAnimal" required>
+                                                                        <option
+                                                                            *ngFor="let nourriture of listNourritures;"
+                                                                            [ngValue]="nourriture">
+                                                                            {{nourriture.nomNourriture}}
+                                                                        </option>
+                                                                    </select>
+                                                                </div>
+                                                                <button type="submit" class="btn btn-success"
+                                                                    [disabled]="myFormAnimal.invalid">Modifier</button>
+                                                                <button type="button" (click)="onReset()"
+                                                                    class="btn btn-warning">Réinitialiser</button>
+                                                            </form>
+                                                        </div>
+                                                        <div class="col-sm-3">
+                                                        </div>
                                                     </div>
-                                                    <div class="form-group">
-                                                        <p>Espece de l'animal :</p>
-                                                        <input type="text" class="form-control myInput"
-                                                            id="especeAnimal" formControlName="especeAnimal"
-                                                            [(ngModel)]="animalCourant.especeAnimal"
-                                                            placeholder="exemple : Tigre" required>
-                                                    </div>
-                                                    <div class="form-group">
-                                                        <p>Age de l'animal</p>
-                                                        <input type="number" class="form-control myInput" id="ageAnimal"
-                                                            formControlName="ageAnimal"
-                                                            [(ngModel)]="animalCourant.ageAnimal"
-                                                            placeholder="exemple : 5" required>
-                                                    </div>
-                                                    <div class="form-group">
-                                                        <p>Enclos de l'animal :</p>
-                                                        <select [compareWith]="byIdEnclos" class="form-control myInput"
-                                                            id="enclosAnimal" [(ngModel)]="animalCourant.enclosAnimal"
-                                                            formControlName="enclosAnimal" required>
-                                                            <option *ngFor="let enclos of listEnclos;"
-                                                                [ngValue]="enclos">
-                                                                {{enclos.nomEnclos}}
-                                                            </option>
-                                                        </select>
-                                                    </div>
-                                                    <div class="form-group">
-                                                        <p>Régime alimentaire :</p>
-                                                        <select [compareWith]="byIdNourriture"
-                                                            class="form-control myInput" id="nourritureAnimal"
-                                                            [(ngModel)]="animalCourant.nourritureAnimal"
-                                                            formControlName="nourritureAnimal" required>
-                                                            <option *ngFor="let nourriture of listNourritures;"
-                                                                [ngValue]="nourriture">
-                                                                {{nourriture.nomNourriture}}
-                                                            </option>
-                                                        </select>
-                                                    </div>
-                                                    <button type="submit" class="btn btn-success"
-                                                        [disabled]="myFormAnimal.invalid">Modifier</button>
-                                                    <button type="button" (click)="onReset()"
-                                                        class="btn btn-warning">Réinitialiser</button>
-                                                </form>
-                                            </div>
-                                            <div class="col-sm-3">
+                                                </div>
                                             </div>
                                         </div>
                                     </div>

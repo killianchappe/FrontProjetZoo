@@ -83,53 +83,64 @@
                     </div>
                 </div>
                 <div class="tab-pane myCard" id="ajout-tache">
-                    <div class="container">
-                        <div class="row">
-                            <div class="col-sm-3">
-                            </div>
-                            <div class="col-sm-6">
-                                <form [formGroup]="myFormTache" (ngSubmit)="ajoutTache()" class="was-validated">
-                                    <h3 class="text-primary">Ajouter une nouvelle tâche</h3>
-                                    <div class="form-group">
-                                        <h6>Libellé de la tâche:</h6>
-                                        <input type="text" class="form-control myInput" id="libelleTache"
-                                            formControlName="libelleTache" [(ngModel)]="newTache.libelleTache"
-                                            placeholder="exemple : Nettoyer l'enclos des tigres" required>
+                    <div class="col-md-12 myCard">
+                        <div class="card">
+                            <div class="card-body myCard2">
+                                <div class="container">
+                                    <div class="row">
+                                        <div class="col-sm-3">
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <form [formGroup]="myFormTache" (ngSubmit)="ajoutTache()"
+                                                class="was-validated">
+                                                <h3 class="text-primary">Ajouter une nouvelle tâche</h3>
+                                                <div class="form-group">
+                                                    <h6>Libellé de la tâche:</h6>
+                                                    <input type="text" class="form-control myInput" id="libelleTache"
+                                                        formControlName="libelleTache"
+                                                        [(ngModel)]="newTache.libelleTache"
+                                                        placeholder="exemple : Nettoyer l'enclos des tigres" required>
+                                                </div>
+                                                <div class="form-group">
+                                                    <h6>Commentaire :</h6>
+                                                    <input type="text" class="form-control myInput"
+                                                        id="commentaireTache" formControlName="commentaireTache"
+                                                        [(ngModel)]="newTache.commentaireTache"
+                                                        placeholder="exemple : Attention, Tigrou est malade!" required>
+                                                </div>
+                                                <div class="form-group">
+                                                    <h6>Date et heure :</h6>
+                                                    <input type="datetime-local" class="form-control myInput"
+                                                        id="dateTache" formControlName="dateTache"
+                                                        [(ngModel)]="newTache.dateTache"
+                                                        placeholder="exemple : 01/01/2020 14:00:00" required>
+                                                </div>
+                                                <div class="form-group">
+                                                    <h6>Durée (heure) :</h6>
+                                                    <input type="number" class="form-control myInput" id="dureeTache"
+                                                        formControlName="dureeTache" [(ngModel)]="newTache.dureeTache"
+                                                        placeholder="exemple : 4" required>
+                                                </div>
+                                                <div class="form-group">
+                                                    <h6>Utilisateur associé :</h6>
+                                                    <select class="form-control myInput" id="userTache"
+                                                        [(ngModel)]="newTache.userTache" formControlName="userTache"
+                                                        required>
+                                                        <option *ngFor="let user of listUsers;" [ngValue]="user">
+                                                            {{user.nomUser}} {{user.prenomUser}}
+                                                        </option>
+                                                    </select>
+                                                </div>
+                                                <button type="submit" class="btn btn-success"
+                                                    [disabled]="myFormTache.invalid">Ajouter</button>
+                                                <button type="button" (click)="onResetTache()"
+                                                    class="btn btn-warning">Réinitialiser</button>
+                                            </form>
+                                        </div>
+                                        <div class="col-sm-3">
+                                        </div>
                                     </div>
-                                    <div class="form-group">
-                                        <h6>Commentaire :</h6>
-                                        <input type="text" class="form-control myInput" id="commentaireTache"
-                                            formControlName="commentaireTache" [(ngModel)]="newTache.commentaireTache"
-                                            placeholder="exemple : Attention, Tigrou est malade!" required>
-                                    </div>
-                                    <div class="form-group">
-                                        <h6>Date et heure :</h6>
-                                        <input type="datetime-local" class="form-control myInput" id="dateTache"
-                                            formControlName="dateTache" [(ngModel)]="newTache.dateTache"
-                                            placeholder="exemple : 01/01/2020 14:00:00" required>
-                                    </div>
-                                    <div class="form-group">
-                                        <h6>Durée (heure) :</h6>
-                                        <input type="number" class="form-control myInput" id="dureeTache"
-                                            formControlName="dureeTache" [(ngModel)]="newTache.dureeTache"
-                                            placeholder="exemple : 4" required>
-                                    </div>
-                                    <div class="form-group">
-                                        <h6>Utilisateur associé :</h6>
-                                        <select class="form-control myInput" id="userTache"
-                                            [(ngModel)]="newTache.userTache" formControlName="userTache" required>
-                                            <option *ngFor="let user of listUsers;" [ngValue]="user">
-                                                {{user.nomUser}} {{user.prenomUser}}
-                                            </option>
-                                        </select>
-                                    </div>
-                                    <button type="submit" class="btn btn-success"
-                                        [disabled]="myFormTache.invalid">Ajouter</button>
-                                    <button type="button" (click)="onResetTache()"
-                                        class="btn btn-warning">Réinitialiser</button>
-                                </form>
-                            </div>
-                            <div class="col-sm-3">
+                                </div>
                             </div>
                         </div>
                     </div>

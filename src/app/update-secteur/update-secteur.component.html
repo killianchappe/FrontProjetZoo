@@ -43,28 +43,35 @@
                                 <div class="tab-pane active" id="update-secteur">
 
                                     <!-- Update Secteur -->
-                                    <div class="container">
-                                        <div class="row">
-                                            <div class="col-sm-3">
-                                            </div>
-                                            <div class="col-sm-6">
-                                                <form [formGroup]="myForm" (ngSubmit)="updateSecteur(secteurCourant)"
-                                                    class="was-validated myForm">
-                                                    <div class="form-group">
-                                                        <h3 class="text-primary">Modifier un secteur</h3>
-                                                        <p>Nom du secteur :</p>
-                                                        <input type="text" class="form-control myInput" id="nomSecteur"
-                                                            formControlName="nomSecteur"
-                                                            [(ngModel)]="secteurCourant.nomSecteur"
-                                                            placeholder="exemple : Fauves" required>
+                                    <div class="col-md-12 myCard">
+                                        <div class="card">
+                                            <div class="card-body myCard2">
+                                                <div class="container">
+                                                    <div class="row">
+                                                        <div class="col-sm-3">
+                                                        </div>
+                                                        <div class="col-sm-6">
+                                                            <form [formGroup]="myForm"
+                                                                (ngSubmit)="updateSecteur(secteurCourant)"
+                                                                class="was-validated myForm">
+                                                                <div class="form-group">
+                                                                    <h3 class="text-primary">Modifier un secteur</h3>
+                                                                    <p>Nom du secteur :</p>
+                                                                    <input type="text" class="form-control myInput"
+                                                                        id="nomSecteur" formControlName="nomSecteur"
+                                                                        [(ngModel)]="secteurCourant.nomSecteur"
+                                                                        placeholder="exemple : Fauves" required>
+                                                                </div>
+                                                                <button type="submit" class="btn btn-success"
+                                                                    [disabled]="myForm.invalid">Modifier</button>
+                                                                <button type="button" (click)="onReset()"
+                                                                    class="btn btn-warning">Réinitialiser</button>
+                                                            </form>
+                                                        </div>
+                                                        <div class="col-sm-3">
+                                                        </div>
                                                     </div>
-                                                    <button type="submit" class="btn btn-success"
-                                                        [disabled]="myForm.invalid">Modifier</button>
-                                                    <button type="button" (click)="onReset()"
-                                                        class="btn btn-warning">Réinitialiser</button>
-                                                </form>
-                                            </div>
-                                            <div class="col-sm-3">
+                                                </div>
                                             </div>
                                         </div>
                                     </div>

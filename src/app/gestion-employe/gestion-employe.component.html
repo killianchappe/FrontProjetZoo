@@ -50,10 +50,29 @@
                                                 <td>{{employe.emailUser}}</td>
                                                 <td>{{employe.secteurUser.nomSecteur}}</td>
                                                 <td>{{employe.roleUser.libelleRole}}</td>
-                                                <td><button type="button"
-                                                        [routerLink]="['/updateemploye',employe.idUser]"
-                                                        class="btn btn-success"><i class="material-icons">autorenew</i>
-                                                        Modifier</button>
+                                                <td>
+                                                    <div>
+                                                        <button type="button"
+                                                            [routerLink]="['/updateemploye',employe.idUser]"
+                                                            class="btn btn-success"><i
+                                                                class="material-icons">autorenew</i>
+                                                            Modifier</button>
+                                                    </div>
+                                                    <!-- <div *ngIf="isManager">
+                                                        <button type="button"
+                                                            [disabled]="employe.roleUser.libelleRole == 'manager'"
+                                                            [routerLink]="['/updateemploye',employe.idUser]"
+                                                            class="btn btn-success"><i
+                                                                class="material-icons">autorenew</i>
+                                                            Modifier</button>
+                                                    </div> -->
+                                                    <!-- <div *ngIf="!isAdmin&&!isManager">
+                                                        <button type="button" [disabled]="true"
+                                                            [routerLink]="['/updateemploye',employe.idUser]"
+                                                            class="btn btn-success"><i
+                                                                class="material-icons">autorenew</i>
+                                                            Modifier</button>
+                                                    </div> -->
                                                 </td>
                                                 <td>
                                                     <div *ngIf="employe.roleUser.libelleRole != 'admin'"><button
