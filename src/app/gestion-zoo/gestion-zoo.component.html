@@ -42,7 +42,7 @@
                                                 <div class="ripple-container"></div>
                                             </a>
                                         </li>
-                                        <li class="nav-item">
+                                        <li *ngIf="isManager" class="nav-item">
                                             <a class="nav-link" href="#ajout-secteur" data-toggle="tab">
                                                 <i class="material-icons">playlist_add</i> Ajouter secteur
                                                 <div class="ripple-container"></div>
@@ -74,17 +74,38 @@
                                                         <tbody>
                                                             <tr *ngFor="let secteur of listSecteurs">
                                                                 <td>{{secteur.nomSecteur}}</td>
-                                                                <td><button type="button"
-                                                                        [routerLink]="['/updatesecteur',secteur.idSecteur]"
-                                                                        class="btn btn-success"><i
-                                                                            class="material-icons">autorenew</i>
-                                                                        Modifier</button>
+                                                                <td>
+                                                                    <div *ngIf="isManager">
+                                                                        <button type="button"
+                                                                            [routerLink]="['/updatesecteur',secteur.idSecteur]"
+                                                                            class="btn btn-success"><i
+                                                                                class="material-icons">autorenew</i>
+                                                                            Modifier</button>
+                                                                    </div>
+                                                                    <div *ngIf="!isManager">
+                                                                        <button type="button" disabled="true"
+                                                                            [routerLink]="['/updatesecteur',secteur.idSecteur]"
+                                                                            class="btn btn-success"><i
+                                                                                class="material-icons">autorenew</i>
+                                                                            Modifier</button>
+                                                                    </div>
                                                                 </td>
-                                                                <td><button type="button"
-                                                                        (click)="deleteSecteur(secteur.idSecteur, i)"
-                                                                        class="btn btn-warning"><i
-                                                                            class="material-icons">delete</i>
-                                                                        Supprimer</button>
+                                                                <td>
+                                                                    <div>
+                                                                        <button *ngIf="isManager" type="button"
+                                                                            (click)="deleteSecteur(secteur.idSecteur, i)"
+                                                                            class="btn btn-warning"><i
+                                                                                class="material-icons">delete</i>
+                                                                            Supprimer</button>
+                                                                    </div>
+                                                                    <div>
+                                                                        <button *ngIf="!isManager" type="button"
+                                                                            disabled="true"
+                                                                            (click)="deleteSecteur(secteur.idSecteur, i)"
+                                                                            class="btn btn-warning"><i
+                                                                                class="material-icons">delete</i>
+                                                                            Supprimer</button>
+                                                                    </div>
                                                                 </td>
                                                             </tr>
                                                         </tbody>
@@ -155,7 +176,7 @@
                                                 <div class="ripple-container"></div>
                                             </a>
                                         </li>
-                                        <li class="nav-item">
+                                        <li *ngIf="isManager" class="nav-item">
                                             <a class="nav-link" href="#ajout-enclos" data-toggle="tab">
                                                 <i class="material-icons">playlist_add</i> Ajouter enclos
                                                 <div class="ripple-container"></div>
@@ -195,17 +216,38 @@
                                                                 <td>{{enclos.nomEnclos}}</td>
                                                                 <td>{{enclos.capaciteEnclos}}</td>
                                                                 <td>{{enclos.secteurEnclos.nomSecteur}}</td>
-                                                                <td><button type="button"
-                                                                        [routerLink]="['/updateenclos',enclos.idEnclos]"
-                                                                        class="btn btn-success"><i
-                                                                            class="material-icons">autorenew</i>
-                                                                        Modifier</button>
+                                                                <td>
+                                                                    <div>
+                                                                        <button *ngIf="isManager" type="button"
+                                                                            [routerLink]="['/updateenclos',enclos.idEnclos]"
+                                                                            class="btn btn-success"><i
+                                                                                class="material-icons">autorenew</i>
+                                                                            Modifier</button>
+                                                                    </div>
+                                                                    <div>
+                                                                        <button *ngIf="!isManager" type="button"
+                                                                            disabled="true"
+                                                                            [routerLink]="['/updateenclos',enclos.idEnclos]"
+                                                                            class="btn btn-success"><i
+                                                                                class="material-icons">autorenew</i>
+                                                                            Modifier</button>
+                                                                    </div>
                                                                 </td>
-                                                                <td><button type="button"
-                                                                        (click)="deleteEnclos(enclos.idEnclos, i)"
-                                                                        class="btn btn-warning"><i
-                                                                            class="material-icons">delete</i>
-                                                                        Supprimer</button>
+                                                                <td>
+                                                                    <div *ngIf="isManager">
+                                                                        <button type="button"
+                                                                            (click)="deleteEnclos(enclos.idEnclos, i)"
+                                                                            class="btn btn-warning"><i
+                                                                                class="material-icons">delete</i>
+                                                                            Supprimer</button>
+                                                                    </div>
+                                                                    <div *ngIf="!isManager">
+                                                                        <button type="button" disabled="true"
+                                                                            (click)="deleteEnclos(enclos.idEnclos, i)"
+                                                                            class="btn btn-warning"><i
+                                                                                class="material-icons">delete</i>
+                                                                            Supprimer</button>
+                                                                    </div>
                                                                 </td>
                                                             </tr>
                                                         </tbody>
@@ -294,7 +336,7 @@
                                                 <div class="ripple-container"></div>
                                             </a>
                                         </li>
-                                        <li class="nav-item">
+                                        <li *ngIf="isManager" class="nav-item">
                                             <a class="nav-link" href="#ajout-animal" data-toggle="tab">
                                                 <i class="material-icons">playlist_add</i> Ajouter animal
                                                 <div class="ripple-container"></div>
@@ -342,17 +384,37 @@
                                                                 <td>{{animal.ageAnimal}}</td>
                                                                 <td>{{animal.enclosAnimal.nomEnclos}}</td>
                                                                 <td>{{animal.nourritureAnimal.nomNourriture}}</td>
-                                                                <td><button type="button"
-                                                                        [routerLink]="['/updateanimal',animal.idAnimal]"
-                                                                        class="btn btn-success"><i
-                                                                            class="material-icons">autorenew</i>
-                                                                        Modifier</button>
+                                                                <td>
+                                                                    <div *ngIf="isManager">
+                                                                        <button type="button"
+                                                                            [routerLink]="['/updateanimal',animal.idAnimal]"
+                                                                            class="btn btn-success"><i
+                                                                                class="material-icons">autorenew</i>
+                                                                            Modifier</button>
+                                                                    </div>
+                                                                    <div *ngIf="!isManager">
+                                                                        <button type="button" disabled="true"
+                                                                            [routerLink]="['/updateanimal',animal.idAnimal]"
+                                                                            class="btn btn-success"><i
+                                                                                class="material-icons">autorenew</i>
+                                                                            Modifier</button>
+                                                                    </div>
                                                                 </td>
-                                                                <td><button type="button"
-                                                                        (click)="deleteAnimal(animal.idAnimal, i)"
-                                                                        class="btn btn-warning"><i
-                                                                            class="material-icons">delete</i>
-                                                                        Supprimer</button>
+                                                                <td>
+                                                                    <div *ngIf="isManager">
+                                                                        <button type="button"
+                                                                            (click)="deleteAnimal(animal.idAnimal, i)"
+                                                                            class="btn btn-warning"><i
+                                                                                class="material-icons">delete</i>
+                                                                            Supprimer</button>
+                                                                    </div>
+                                                                    <div *ngIf="!isManager">
+                                                                        <button type="button" disabled="true"
+                                                                            (click)="deleteAnimal(animal.idAnimal, i)"
+                                                                            class="btn btn-warning"><i
+                                                                                class="material-icons">delete</i>
+                                                                            Supprimer</button>
+                                                                    </div>
                                                                 </td>
                                                             </tr>
                                                         </tbody>

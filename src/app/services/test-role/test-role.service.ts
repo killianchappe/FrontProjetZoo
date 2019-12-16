@@ -38,10 +38,38 @@ export class TestRoleService {
   }
 
   getValuesAdmin() {
+    try {
+      this.role = this.helper.decodeToken(localStorage.getItem('currentUser'))['roleUser']
+    } catch (error) {
+    }
+    try {
+      if (this.role.idRole == 1) {
+        this.isAdmin = true;
+      } else if (this.role.idRole == 2) {
+        this.isAdmin = false;
+      } else {
+        this.isAdmin = false;
+      }
+    } catch (error) {
+    }
     return this.isAdmin;
   }
 
   getValuesManager() {
+    try {
+      this.role = this.helper.decodeToken(localStorage.getItem('currentUser'))['roleUser']
+    } catch (error) {
+    }
+    try {
+      if (this.role.idRole == 1) {
+        this.isManager = true;
+      } else if (this.role.idRole == 2) {
+        this.isManager = true;
+      } else {
+        this.isManager = false;
+      }
+    } catch (error) {
+    }
     return this.isManager;
   }
 

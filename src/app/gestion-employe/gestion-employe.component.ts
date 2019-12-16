@@ -2,11 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { User } from "../models/user";
 import { UserService } from "../services/user/user.service";
 import { Router } from '@angular/router';
-import { Secteur } from "../models/secteur";
-import { SecteurService } from "../services/secteur/secteur.service";
-import { Role } from "../models/role";
-import { RoleService } from "../services/role/role.service";
 import Swal from 'sweetalert2';
+import { TestRoleService } from '../services/test-role/test-role.service';
 
 @Component({
   selector: 'app-gestion-employe',
@@ -16,11 +13,16 @@ import Swal from 'sweetalert2';
 export class GestionEmployeComponent implements OnInit {
 
   listEmployes: User[] = [];
+  isAdmin: Boolean;
+  isManager: Boolean;
 
   constructor(private router: Router,
-    private userService: UserService) { }
+    private userService: UserService,
+    private test: TestRoleService) { }
 
   ngOnInit() {
+    this.isAdmin = this.test.getValuesAdmin();
+    this.isManager = this.test.getValuesManager();
     this.userService.getAll().subscribe(data => {
       this.listEmployes = data;
     });

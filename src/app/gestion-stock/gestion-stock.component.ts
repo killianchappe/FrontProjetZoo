@@ -3,7 +3,8 @@ import { Router, ActivatedRoute } from '@angular/router';
 import Swal from 'sweetalert2';
 import { FormBuilder, FormGroup, Validators, FormControl } from '@angular/forms';
 import { Nourriture } from "../models/nourriture";
-import { NourritureService } from "../services/nourriture/nourriture.service"
+import { NourritureService } from "../services/nourriture/nourriture.service";
+import { TestRoleService } from "../services/test-role/test-role.service";
 
 @Component({
   selector: 'app-gestion-stock',
@@ -15,12 +16,17 @@ export class GestionStockComponent implements OnInit {
   listNourritures: Nourriture[] = [];
   newNourriture: Nourriture = new Nourriture();
   myForm: FormGroup;
+  isAdmin: Boolean;
+  isManager: Boolean;
 
   constructor(private router: Router,
     private nourritureService: NourritureService,
-    private formBuilder: FormBuilder) { }
+    private formBuilder: FormBuilder,
+    private test: TestRoleService) { }
 
   ngOnInit() {
+    this.isAdmin = this.test.getValuesAdmin();
+    this.isManager = this.test.getValuesManager();
     this.nourritureService.getAll().subscribe(data => {
       this.listNourritures = data;
     });

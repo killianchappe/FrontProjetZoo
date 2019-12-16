@@ -6,22 +6,46 @@
     </div>
     <div class="sidebar-wrapper mySidebar">
         <ul class="nav">
-            <li class="nav-item" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}">
+            <li *ngIf="isManager" class="nav-item" [routerLinkActive]="['active']"
+                [routerLinkActiveOptions]="{exact:true}">
                 <a class="nav-link" [routerLink]="['/employe']">
                     <i class="material-icons">people</i>
-                    <p>Personnel</p>
+                    <p>Gestion du personnel</p>
                 </a>
             </li>
-            <li class="nav-item" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}">
+            <li *ngIf="!isManager" class="nav-item" [routerLinkActive]="['active']"
+                [routerLinkActiveOptions]="{exact:true}">
+                <a class="nav-link" [routerLink]="['/employe']">
+                    <i class="material-icons">people</i>
+                    <p>Mes collègues</p>
+                </a>
+            </li>
+            <li *ngIf="isManager" class="nav-item" [routerLinkActive]="['active']"
+                [routerLinkActiveOptions]="{exact:true}">
                 <a class="nav-link" [routerLink]="['/tache']">
                     <i class="material-icons">assignment</i>
                     <p>Gestion des tâches</p>
                 </a>
             </li>
-            <li class="nav-item " [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}">
+            <li *ngIf="!isManager" class="nav-item" [routerLinkActive]="['active']"
+                [routerLinkActiveOptions]="{exact:true}">
+                <a class="nav-link" [routerLink]="['/tache']">
+                    <i class="material-icons">assignment</i>
+                    <p>Mon planning</p>
+                </a>
+            </li>
+            <li *ngIf="isManager" class="nav-item " [routerLinkActive]="['active']"
+                [routerLinkActiveOptions]="{exact:true}">
                 <a class="nav-link" [routerLink]="['/zoo']">
                     <i class="material-icons">local_florist</i>
                     <p>Gestion du Zoo</p>
+                </a>
+            </li>
+            <li *ngIf="!isManager" class="nav-item " [routerLinkActive]="['active']"
+                [routerLinkActiveOptions]="{exact:true}">
+                <a class="nav-link" [routerLink]="['/zoo']">
+                    <i class="material-icons">local_florist</i>
+                    <p>Voir le Zoo</p>
                 </a>
             </li>
             <li class="nav-item " [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}">
@@ -38,7 +62,7 @@
                 </a>
             </li>
             <li class="nav-item " [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}">
-                <a class="nav-link" [routerLink]="['/compte']">
+                <a class="nav-link" [routerLink]="['/compte', idCompte]">
                     <i class="material-icons">face</i>
                     <p>Mon Compte</p>
                 </a>

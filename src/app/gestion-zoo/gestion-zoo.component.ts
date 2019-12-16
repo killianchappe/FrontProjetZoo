@@ -10,6 +10,7 @@ import { SecteurService } from "../services/secteur/secteur.service";
 import { EnclosService } from "../services/enclos/enclos.service";
 import { AnimalService } from "../services/animal/animal.service";
 import { NourritureService } from "../services/nourriture/nourriture.service";
+import { TestRoleService } from "../services/test-role/test-role.service";
 
 @Component({
   selector: 'app-gestion-zoo',
@@ -28,15 +29,20 @@ export class GestionZooComponent implements OnInit {
   myFormAnimal: FormGroup;
   myFormEnclos: FormGroup;
   myFormSecteur: FormGroup;
+  isAdmin: Boolean;
+  isManager: Boolean;
 
   constructor(private router: Router,
     private secteurService: SecteurService,
     private enclosService: EnclosService,
     private animalService: AnimalService,
     private formBuilder: FormBuilder,
-    private nourritureService: NourritureService) { }
+    private nourritureService: NourritureService,
+    private test: TestRoleService) { }
 
   ngOnInit() {
+    this.isAdmin = this.test.getValuesAdmin();
+    this.isManager = this.test.getValuesManager();
     this.secteurService.getAll().subscribe(data => {
       this.listSecteurs = data;
     });

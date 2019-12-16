@@ -10,7 +10,7 @@
                                 <div class="ripple-container"></div>
                             </a>
                         </li>
-                        <li class="nav-item">
+                        <li *ngIf="isManager" class="nav-item">
                             <a class="nav-link" href="#ajouter-nourriture" data-toggle="tab">
                                 <i class="material-icons">playlist_add</i> Ajouter aliment
                                 <div class="ripple-container"></div>
@@ -51,10 +51,19 @@
                                                         class="btn btn-success"><i class="material-icons">autorenew</i>
                                                         Modifier</button>
                                                 </td>
-                                                <td><button type="button"
-                                                        (click)="deleteNourriture(nourriture.idNourriture)"
-                                                        class="btn btn-warning"><i class="material-icons">delete</i>
-                                                        Supprimer</button>
+                                                <td>
+                                                    <div *ngIf="isManager">
+                                                        <button type="button"
+                                                            (click)="deleteNourriture(nourriture.idNourriture)"
+                                                            class="btn btn-warning"><i class="material-icons">delete</i>
+                                                            Supprimer</button>
+                                                    </div>
+                                                    <div *ngIf="!isManager">
+                                                        <button type="button" disabled="true"
+                                                            (click)="deleteNourriture(nourriture.idNourriture)"
+                                                            class="btn btn-warning"><i class="material-icons">delete</i>
+                                                            Supprimer</button>
+                                                    </div>
                                                 </td>
                                             </tr>
                                         </tbody>

@@ -4,9 +4,15 @@
             <div class="nav-tabs-navigation">
                 <div class="nav-tabs-wrapper">
                     <ul class="nav nav-tabs" data-tabs="tabs">
-                        <li class="nav-item">
+                        <li *ngIf="isManager" class="nav-item">
                             <a class="nav-link active" href="#table-employe" data-toggle="tab">
                                 <i class="material-icons">person</i> Gestion du personnel
+                                <div class="ripple-container"></div>
+                            </a>
+                        </li>
+                        <li *ngIf="!isManager" class="nav-item">
+                            <a class="nav-link active" href="#table-employe" data-toggle="tab">
+                                <i class="material-icons">person</i> Mes collègues
                                 <div class="ripple-container"></div>
                             </a>
                         </li>
@@ -52,35 +58,77 @@
                                                 <td>{{employe.roleUser.libelleRole}}</td>
                                                 <td>
                                                     <div>
+                                                        <button *ngIf="isAdmin&&isManager" type="button"
+                                                            [routerLink]="['/updateemploye',employe.idUser]"
+                                                            class="btn btn-success"><i
+                                                                class="material-icons">autorenew</i>
+                                                            Modifier</button>
+                                                    </div>
+                                                    <div
+                                                        *ngIf="!isAdmin&&isManager && (employe.roleUser.libelleRole == 'manager' || employe.roleUser.libelleRole == 'admin')">
+                                                        <!-- <button type="button"
+                                                            [routerLink]="['/updateemploye',employe.idUser]"
+                                                            class="btn btn-success"><i
+                                                                class="material-icons">autorenew</i>
+                                                            Modifier</button> -->
+                                                    </div>
+                                                    <div
+                                                        *ngIf="!isAdmin&&isManager && employe.roleUser.libelleRole == 'employe'">
                                                         <button type="button"
                                                             [routerLink]="['/updateemploye',employe.idUser]"
                                                             class="btn btn-success"><i
                                                                 class="material-icons">autorenew</i>
                                                             Modifier</button>
                                                     </div>
-                                                    <!-- <div *ngIf="isManager">
-                                                        <button type="button"
-                                                            [disabled]="employe.roleUser.libelleRole == 'manager'"
+                                                    <div *ngIf="!isAdmin&&!isManager">
+                                                        <!-- <button type="button" [disabled]="true"
                                                             [routerLink]="['/updateemploye',employe.idUser]"
                                                             class="btn btn-success"><i
                                                                 class="material-icons">autorenew</i>
-                                                            Modifier</button>
-                                                    </div> -->
-                                                    <!-- <div *ngIf="!isAdmin&&!isManager">
-                                                        <button type="button" [disabled]="true"
-                                                            [routerLink]="['/updateemploye',employe.idUser]"
-                                                            class="btn btn-success"><i
-                                                                class="material-icons">autorenew</i>
-                                                            Modifier</button>
-                                                    </div> -->
+                                                            Modifier</button> -->
+                                                    </div>
                                                 </td>
                                                 <td>
-                                                    <div *ngIf="employe.roleUser.libelleRole != 'admin'"><button
-                                                            type="button" (click)="deleteEmploye(employe.idUser, i)"
-                                                            class="btn btn-danger"><i class="material-icons">gavel</i>
-                                                            Licencier</button></div>
+                                                    <div *ngIf="employe.roleUser.libelleRole != 'admin'">
+                                                        <div>
+                                                            <button *ngIf="isAdmin&&isManager" type="button"
+                                                                (click)="deleteEmploye(employe.idUser, i)"
+                                                                class="btn btn-danger"><i
+                                                                    class="material-icons">gavel</i>
+                                                                Licencier</button>
+                                                        </div>
+                                                        <div
+                                                            *ngIf="!isAdmin&&isManager && (employe.roleUser.libelleRole == 'manager' || employe.roleUser.libelleRole == 'admin')">
+                                                            <!-- <button type="button"
+                                                                [disabled]="employe.roleUser.libelleRole == 'manager' || employe.roleUser.libelleRole == 'admin'"
+                                                                (click)="deleteEmploye(employe.idUser, i)"
+                                                                class="btn btn-danger"><i
+                                                                    class="material-icons">gavel</i>
+                                                                Licencier</button> -->
+                                                        </div>
+                                                        <div
+                                                            *ngIf="!isAdmin&&isManager && employe.roleUser.libelleRole == 'employe'">
+                                                            <button *ngIf="!isAdmin&&isManager" type="button"
+                                                                (click)="deleteEmploye(employe.idUser, i)"
+                                                                class="btn btn-danger"><i
+                                                                    class="material-icons">gavel</i>
+                                                                Licencier</button>
+                                                        </div>
+                                                        <div>
+                                                            <!-- <button *ngIf="!isAdmin&&!isManager" type="button"
+                                                                [disabled]="true"
+                                                                (click)="deleteEmploye(employe.idUser, i)"
+                                                                class="btn btn-danger"><i
+                                                                    class="material-icons">gavel</i>
+                                                                Licencier</button> -->
+                                                        </div>
+
+                                                    </div>
                                                     <div *ngIf="employe.roleUser.libelleRole == 'admin'">
-                                                        <p class="text-danger myText">IMPOSSIBLE : ADMIN</p>
+                                                        <!-- <button type="button" [disabled]="true"
+                                                            (click)="deleteEmploye(employe.idUser, i)"
+                                                            class="btn btn-danger"><i class="material-icons">gavel</i>
+                                                            Licencier</button> -->
                                                     </div>
                                                 </td>
                                             </tr>

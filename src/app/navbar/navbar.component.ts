@@ -13,6 +13,7 @@ export class NavbarComponent implements OnInit {
 
   prenom: String;
   helper = new JwtHelperService();
+  idCompte: number;
 
   constructor(private authentificationService: AuthentificationService,
     private router: Router) { }
@@ -20,6 +21,10 @@ export class NavbarComponent implements OnInit {
   ngOnInit() {
     try {
       this.prenom = this.helper.decodeToken(localStorage.getItem('currentUser'))['prenomUser'];
+    } catch (error) {
+    }
+    try {
+      this.idCompte = this.helper.decodeToken(localStorage.getItem('currentUser'))['idUser'];
     } catch (error) {
     }
   }

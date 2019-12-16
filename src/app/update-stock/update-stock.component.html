@@ -36,10 +36,18 @@
                                                 <h3 class="text-primary">Modifier un aliment</h3>
                                                 <div class="form-group">
                                                     <h6>Nom de l'aliment :</h6>
-                                                    <input type="text" class="form-control myInput" id="nomNourriture"
-                                                        formControlName="nomNourriture"
-                                                        [(ngModel)]="nourritureCourante.nomNourriture"
-                                                        placeholder="exemple : Viande" required>
+                                                    <div *ngIf="isManager">
+                                                        <input type="text" class="form-control myInput"
+                                                            id="nomNourriture" formControlName="nomNourriture"
+                                                            [(ngModel)]="nourritureCourante.nomNourriture"
+                                                            placeholder="exemple : Viande" required>
+                                                    </div>
+                                                    <div *ngIf="!isManager">
+                                                        <input disabled="true" type="text" class="form-control myInput"
+                                                            id="nomNourriture" formControlName="nomNourriture"
+                                                            [(ngModel)]="nourritureCourante.nomNourriture"
+                                                            placeholder="exemple : Viande" required>
+                                                    </div>
                                                 </div>
                                                 <div class="form-group">
                                                     <h6>Stock :</h6>

@@ -4,6 +4,7 @@ import Swal from 'sweetalert2'
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Nourriture } from '../models/nourriture';
 import { NourritureService } from '../services/nourriture/nourriture.service';
+import { TestRoleService } from "../services/test-role/test-role.service";
 
 @Component({
   selector: 'app-update-stock',
@@ -15,13 +16,20 @@ export class UpdateStockComponent implements OnInit {
   idCourant: number;
   nourritureCourante: Nourriture = new Nourriture();
   myForm: FormGroup;
+  isAdmin: Boolean;
+  isManager: Boolean;
 
   constructor(private nourritureService: NourritureService,
     private route: ActivatedRoute,
     private router: Router,
-    private formBuilder: FormBuilder) { }
+    private formBuilder: FormBuilder,
+    private test: TestRoleService) { }
 
   ngOnInit() {
+    this.isAdmin = this.test.getValuesAdmin();
+    this.isManager = this.test.getValuesManager();
+    console.log(this.isAdmin);
+    console.log(this.isManager);
     this.idCourant = parseInt(this.route.snapshot.paramMap.get('id'));
     this.nourritureService.getOne(this.idCourant).subscribe(data => {
       this.nourritureCourante = data;

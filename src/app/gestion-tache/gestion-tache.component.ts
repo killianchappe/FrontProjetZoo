@@ -8,6 +8,7 @@ import { TacheService } from '../services/tache/tache.service';
 import Swal from 'sweetalert2';
 import { Etat } from '../models/etat';
 import { EtatService } from '../services/etat/etat.service';
+import { TestRoleService } from '../services/test-role/test-role.service';
 
 @Component({
   selector: 'app-gestion-tache',
@@ -21,14 +22,19 @@ export class GestionTacheComponent implements OnInit {
   listTaches: Tache[] = [];
   newTache: Tache = new Tache();
   myFormTache: FormGroup;
+  isAdmin: Boolean;
+  isManager: Boolean;
 
   constructor(private userService: UserService,
     private router: Router,
     private formBuilder: FormBuilder,
     private tacheService: TacheService,
-    private etatService: EtatService) { }
+    private etatService: EtatService,
+    private test: TestRoleService) { }
 
   ngOnInit() {
+    this.isAdmin = this.test.getValuesAdmin();
+    this.isManager = this.test.getValuesManager();
     this.userService.getAll().subscribe(data => {
       this.listUsers = data;
     });
