@@ -28,8 +28,9 @@
                                             <form [formGroup]="myForm" (ngSubmit)="signIn()" class="was-validated">
                                                 <div class="form-group">
                                                     <h6>Login :</h6>
-                                                    <input type="text" class="form-control myInput" id="loginSignin" formControlName="loginSignin"
-                                                        [(ngModel)]="newUser.loginUser" required>
+                                                    <input type="text" class="form-control myInput" id="loginSignin"
+                                                        formControlName="loginSignin" [(ngModel)]="newUser.loginUser"
+                                                        required>
                                                 </div>
                                                 <div class="form-group">
                                                     <h6>Password :</h6>

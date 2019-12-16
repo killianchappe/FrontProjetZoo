@@ -1,0 +1,14 @@
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <div class='app-calendar myCard2'>
+                <full-calendar #calendar defaultView="timeGridWeek" [header]="{
+          left: 'prev,next today',
+          center: 'title',
+          right: 'dayGridMonth,timeGridWeek,timeGridDay,listWeek'
+        }" [plugins]="calendarPlugins" [weekends]="false" [events]="calendarEvents"
+                    (dateClick)="handleDateClick($event)" [allDaySlot]="false"></full-calendar>
+            </div>
+        </div>
+    </div>
+</div>

@@ -3,3 +3,11 @@ body {
     background-image: url('https://www.xmple.com/wallpaper/gradient-brown-grey-linear-1920x1080-c2-808080-f4a460-a-195-f-14.svg');
     background-attachment: fixed;
 }
+
+@import '~@fullcalendar/core/main.css';
+@import '~@fullcalendar/daygrid/main.css';
+  
+.app-calendar {
+    margin: 0 auto;
+    max-width: 1000px;
+}
