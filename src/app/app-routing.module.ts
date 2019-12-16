@@ -18,7 +18,6 @@ import { SigninComponent } from "./signin/signin.component";
 import { RegisterComponent } from "./register/register.component";
 import { AuthGuardService } from "./services/auth-guard/auth-guard.service";
 
-
 const routes: Routes = [
   {
     path: "role",
@@ -97,6 +96,15 @@ const routes: Routes = [
     path: "register",
     component: RegisterComponent,
   },
+  {
+    path: "",
+    component: HomeComponent,
+    canActivate: [AuthGuardService]
+  },
+  {
+    path: '**',
+    redirectTo: ""
+  }
 ];
 
 @NgModule({

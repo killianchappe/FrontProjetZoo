@@ -6,6 +6,7 @@ import { Secteur } from '../models/secteur';
 import { SecteurService } from '../services/secteur/secteur.service';
 import { Enclos } from '../models/enclos';
 import { EnclosService } from "../services/enclos/enclos.service";
+import { TestRoleService } from '../services/test-role/test-role.service';
 
 @Component({
   selector: 'app-update-enclos',
@@ -18,12 +19,21 @@ export class UpdateEnclosComponent implements OnInit {
   enclosCourant: Enclos = new Enclos();
   myForm: FormGroup;
   listSecteurs: Secteur[] = [];
+  isAdmin: Boolean;
+  isManager: Boolean;
 
   constructor(private secteurService: SecteurService,
     private route: ActivatedRoute,
     private router: Router,
     private formBuilder: FormBuilder,
-    private enclosService: EnclosService) { }
+    private enclosService: EnclosService,
+    private test: TestRoleService) {
+    this.isAdmin = this.test.getValuesAdmin();
+    this.isManager = this.test.getValuesManager();
+    if (this.isManager == false) {
+      this.router.navigate(['/home']);
+    };
+  }
 
   ngOnInit() {
     this.idCourant = parseInt(this.route.snapshot.paramMap.get('id'));

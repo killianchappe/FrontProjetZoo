@@ -4,6 +4,7 @@ import Swal from 'sweetalert2'
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Secteur } from '../models/secteur';
 import { SecteurService } from '../services/secteur/secteur.service';
+import { TestRoleService } from '../services/test-role/test-role.service';
 
 @Component({
   selector: 'app-update-secteur',
@@ -15,11 +16,20 @@ export class UpdateSecteurComponent implements OnInit {
   idCourant: number;
   secteurCourant: Secteur = new Secteur();
   myForm: FormGroup;
+  isAdmin: Boolean;
+  isManager: Boolean;
 
   constructor(private secteurService: SecteurService,
     private route: ActivatedRoute,
     private router: Router,
-    private formBuilder: FormBuilder) { }
+    private formBuilder: FormBuilder,
+    private test: TestRoleService) {
+    this.isAdmin = this.test.getValuesAdmin();
+    this.isManager = this.test.getValuesManager();
+    if (this.isManager == false) {
+      this.router.navigate(['/home']);
+    };
+  }
 
   ngOnInit() {
     this.idCourant = parseInt(this.route.snapshot.paramMap.get('id'));

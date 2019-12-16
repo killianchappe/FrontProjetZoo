@@ -8,6 +8,7 @@ import { User } from '../models/user';
 import { UserService } from '../services/user/user.service';
 import { Etat } from '../models/etat';
 import { EtatService } from '../services/etat/etat.service';
+import { TestRoleService } from '../services/test-role/test-role.service';
 
 @Component({
   selector: 'app-update-tache',
@@ -21,13 +22,22 @@ export class UpdateTacheComponent implements OnInit {
   myForm: FormGroup;
   listEtats: Etat[] = [];
   listUsers: User[] = [];
+  isAdmin: Boolean;
+  isManager: Boolean;
 
   constructor(private tacheService: TacheService,
     private route: ActivatedRoute,
     private router: Router,
     private formBuilder: FormBuilder,
     private etatService: EtatService,
-    private userService: UserService) { }
+    private userService: UserService,
+    private test: TestRoleService) {
+    this.isAdmin = this.test.getValuesAdmin();
+    this.isManager = this.test.getValuesManager();
+    if (this.isManager == false) {
+      this.router.navigate(['/home']);
+    };
+  }
 
   ngOnInit() {
     this.idCourant = parseInt(this.route.snapshot.paramMap.get('id'));

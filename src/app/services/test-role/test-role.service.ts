@@ -11,6 +11,7 @@ export class TestRoleService {
   isAdmin: Boolean = false;
   isManager: Boolean = false;
   role: Role;
+  idSecure: number;
   helper = new JwtHelperService();
 
   constructor(private router: Router) {
@@ -71,6 +72,14 @@ export class TestRoleService {
     } catch (error) {
     }
     return this.isManager;
+  }
+
+  getValueIdCourant() {
+    try {
+      this.idSecure = this.helper.decodeToken(localStorage.getItem('currentUser'))['idUser']
+    } catch (error) {
+    }
+    return this.idSecure;
   }
 
 }

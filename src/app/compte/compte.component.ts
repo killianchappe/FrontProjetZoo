@@ -8,6 +8,7 @@ import { FormBuilder, Validators, FormGroup } from '@angular/forms';
 import Swal from 'sweetalert2';
 import { Role } from '../models/role';
 import { RoleService } from '../services/role/role.service';
+import { TestRoleService } from '../services/test-role/test-role.service';
 
 @Component({
   selector: 'app-compte',
@@ -21,16 +22,23 @@ export class CompteComponent implements OnInit {
   listRoles: Role[] = [];
   userCourant: User = new User();
   myForm: FormGroup;
+  idSecure: number;
 
   constructor(private secteurService: SecteurService,
     private route: ActivatedRoute,
     private userService: UserService,
     private router: Router,
     private formBuilder: FormBuilder,
-    private roleService: RoleService) { }
+    private roleService: RoleService,
+    private test: TestRoleService) {
+    this.idCourant = parseInt(this.route.snapshot.paramMap.get('id'));
+    this.idSecure = this.test.getValueIdCourant();
+    if (this.idSecure != this.idCourant) {
+      this.router.navigate(['/home']);
+    };
+  }
 
   ngOnInit() {
-    this.idCourant = parseInt(this.route.snapshot.paramMap.get('id'));
     this.userService.getOne(this.idCourant).subscribe(data => {
       this.userCourant = data;
     });

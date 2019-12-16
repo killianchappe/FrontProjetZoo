@@ -25,7 +25,11 @@ export class RegisterComponent implements OnInit {
     private formBuilder: FormBuilder,
     private userService: UserService,
     private secteurService: SecteurService,
-    private roleService: RoleService) { }
+    private roleService: RoleService) {
+      if (localStorage.getItem('currentUser')) {
+        this.router.navigate(['']);
+      };
+  }
 
   ngOnInit() {
     this.roleService.getAll().subscribe(data => {

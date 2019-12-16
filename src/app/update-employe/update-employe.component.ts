@@ -6,6 +6,7 @@ import { User } from '../models/user';
 import { UserService } from "../services/user/user.service";
 import { FormBuilder, Validators, FormGroup } from '@angular/forms';
 import Swal from 'sweetalert2';
+import { TestRoleService } from '../services/test-role/test-role.service';
 
 @Component({
   selector: 'app-update-employe',
@@ -18,12 +19,21 @@ export class UpdateEmployeComponent implements OnInit {
   listSecteurs: Secteur[] = [];
   userCourant: User = new User();
   myForm: FormGroup;
+  isAdmin: Boolean;
+  isManager: Boolean;
 
   constructor(private secteurService: SecteurService,
     private route: ActivatedRoute,
     private userService: UserService,
     private router: Router,
-    private formBuilder: FormBuilder) { }
+    private formBuilder: FormBuilder,
+    private test: TestRoleService) {
+    this.isAdmin = this.test.getValuesAdmin();
+    this.isManager = this.test.getValuesManager();
+    if (this.isManager == false) {
+      this.router.navigate(['/home']);
+    };
+  }
 
   ngOnInit() {
     this.idCourant = parseInt(this.route.snapshot.paramMap.get('id'));

@@ -8,6 +8,7 @@ import { NourritureService } from "../services/nourriture/nourriture.service";
 import { Nourriture } from "../models/nourriture";
 import { Animal } from "../models/animal";
 import { AnimalService } from '../services/animal/animal.service';
+import { TestRoleService } from '../services/test-role/test-role.service';
 
 @Component({
   selector: 'app-update-animal',
@@ -21,13 +22,22 @@ export class UpdateAnimalComponent implements OnInit {
   myForm: FormGroup;
   listEnclos: Enclos[] = [];
   listNourritures: Nourriture[] = [];
+  isAdmin: Boolean;
+  isManager: Boolean;
 
   constructor(private animalService: AnimalService,
     private route: ActivatedRoute,
     private router: Router,
     private formBuilder: FormBuilder,
     private enclosService: EnclosService,
-    private nourritureService: NourritureService) { }
+    private nourritureService: NourritureService,
+    private test: TestRoleService) {
+    this.isAdmin = this.test.getValuesAdmin();
+    this.isManager = this.test.getValuesManager();
+    if (this.isManager == false) {
+      this.router.navigate(['/home']);
+    };
+  }
 
   ngOnInit() {
     this.idCourant = parseInt(this.route.snapshot.paramMap.get('id'));

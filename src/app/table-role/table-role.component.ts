@@ -8,6 +8,7 @@ import { User } from "../models/user";
 import { UserService } from "../services/user/user.service";
 import { Secteur } from "../models/secteur";
 import { SecteurService } from "../services/secteur/secteur.service";
+import { TestRoleService } from '../services/test-role/test-role.service';
 
 @Component({
   selector: 'app-table-role',
@@ -21,12 +22,21 @@ export class TableRoleComponent implements OnInit {
   listSecteurs: Secteur[] = [];
   newUser: User = new User();
   myForm: FormGroup;
+  isAdmin: Boolean;
+  isManager: Boolean
 
   constructor(private router: Router,
     private roleService: RoleService,
     private formBuilder: FormBuilder,
     private userService: UserService,
-    private secteurService: SecteurService) { }
+    private secteurService: SecteurService,
+    private test: TestRoleService) {
+    this.isAdmin = this.test.getValuesAdmin();
+    this.isManager = this.test.getValuesManager();
+    if (this.isAdmin == false) {
+      this.router.navigate(['/home']);
+    };
+  }
 
   ngOnInit() {
     this.roleService.getAll().subscribe(data => {
