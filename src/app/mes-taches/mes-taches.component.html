@@ -1,0 +1,38 @@
+<div class="table-responsive">
+    <table class="table">
+        <thead class=" text-primary">
+            <th>
+                Libellé
+            </th>
+            <th>
+                Commentaire
+            </th>
+            <th>
+                Date
+            </th>
+            <th>
+                Durée
+            </th>
+            <th>
+                Etat
+            </th>
+            <th>
+            </th>
+            <th>
+            </th>
+        </thead>
+        <tbody *ngFor="let tache of listTaches">
+            <tr *ngIf="tache.userTache.idUser == idSecure">
+                <td>{{tache.libelleTache}}</td>
+                <td>{{tache.commentaireTache}}</td>
+                <td>{{tache.dateTache|date:"dd/MM/yyyy hh:mm"}}</td>
+                <td>{{tache.dureeTache}} h</td>
+                <td>{{tache.etatTache.libelleEtat}}</td>
+                <td><button type="button" (click)="updateEtat(tache.idTache)" class="btn btn-success"><i
+                            class="material-icons">autorenew</i>
+                        Modifier</button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>

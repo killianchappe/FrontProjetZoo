@@ -54,17 +54,13 @@ export class CalendrierComponent implements OnInit {
           this.calendarEvents = this.calendarEvents.concat({
             title: tache.libelleTache + " - " + tache.userTache.prenomUser + " "
               + tache.userTache.nomUser + " - Commentaire : " + tache.commentaireTache + " - Durée estimée : "
-              + tache.dureeTache + " h",
+              + tache.dureeTache + " h - Etat : " + tache.etatTache.libelleEtat,
             start: tache.dateTache,
             end: this.fin,
           });
         };
       }
     });
-  }
-
-  handleDateClick(arg) {
-
   }
 
 }

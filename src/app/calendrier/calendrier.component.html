@@ -4,9 +4,9 @@
             <div class='app-calendar'>
                 <full-calendar #calendar defaultView="timeGridWeek" [plugins]="calendarPlugins"
                     [header]="{ left: 'prev,next today', center: 'title', right: 'dayGridMonth,timeGridWeek,timeGridDay' }"
-                    [events]="calendarEvents" (dateClick)="handleDateClick($event)" [allDaySlot]="options.allDaySlot"
-                    [slotEventOverlap]="false" [minTime]="options.minTime" [maxTime]="options.maxTime"
-                    [weekends]="options.weekends" [eventColor]="options.eventColor">
+                    [events]="calendarEvents" [allDaySlot]="options.allDaySlot" [slotEventOverlap]="false"
+                    [minTime]="options.minTime" [maxTime]="options.maxTime" [weekends]="options.weekends"
+                    [eventColor]="options.eventColor">
                 </full-calendar>
             </div>
         </div>
