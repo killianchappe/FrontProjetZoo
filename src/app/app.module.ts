@@ -24,8 +24,8 @@ import { UpdateTacheComponent } from './update-tache/update-tache.component';
 import { SigninComponent } from './signin/signin.component';
 import { RegisterComponent } from './register/register.component';
 import { JwtModule } from '@auth0/angular-jwt';
-import { CalendrierComponent } from './calendrier/calendrier.component';
 import { FullCalendarModule } from '@fullcalendar/angular';
+import { CalendrierComponent } from './calendrier/calendrier.component';
 
 @NgModule({
   declarations: [

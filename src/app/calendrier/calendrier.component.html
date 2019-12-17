@@ -1,13 +1,13 @@
 <div class="container">
     <div class="row">
-        <div class="col-md-12">
-            <div class='app-calendar myCard2'>
-                <full-calendar #calendar defaultView="timeGridWeek" [header]="{
-          left: 'prev,next today',
-          center: 'title',
-          right: 'dayGridMonth,timeGridWeek,timeGridDay,listWeek'
-        }" [plugins]="calendarPlugins" [weekends]="false" [events]="calendarEvents"
-                    (dateClick)="handleDateClick($event)" [allDaySlot]="false"></full-calendar>
+        <div class="col-sm-12">
+            <div class='app-calendar'>
+                <full-calendar #calendar defaultView="timeGridWeek" [plugins]="calendarPlugins"
+                    [header]="{ left: 'prev,next today', center: 'title', right: 'dayGridMonth,timeGridWeek,timeGridDay' }"
+                    [events]="calendarEvents" (dateClick)="handleDateClick($event)" [allDaySlot]="options.allDaySlot"
+                    [slotEventOverlap]="false" [minTime]="options.minTime" [maxTime]="options.maxTime"
+                    [weekends]="options.weekends" [eventColor]="options.eventColor">
+                </full-calendar>
             </div>
         </div>
     </div>

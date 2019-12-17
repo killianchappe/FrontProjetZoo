@@ -155,7 +155,13 @@
                     <h6>PLANNING PAR EMPLOYE A FAIRE</h6>
                 </div>
                 <div *ngIf="!isManager" class="tab-pane myCard active" id="planning-employe">
-                    <app-calendrier></app-calendrier>
+                    <div class="col-md-12 myCard">
+                        <div class="card">
+                            <div class="card-body myCard2">
+                                <app-calendrier></app-calendrier>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
