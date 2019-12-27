@@ -27,10 +27,24 @@
                 <td>{{tache.commentaireTache}}</td>
                 <td>{{tache.dateTache|date:"dd/MM/yyyy hh:mm"}}</td>
                 <td>{{tache.dureeTache}} h</td>
-                <td>{{tache.etatTache.libelleEtat}}</td>
-                <td><button type="button" (click)="updateEtat(tache.idTache)" class="btn btn-success"><i
-                            class="material-icons">autorenew</i>
-                        Modifier</button>
+                <td><button *ngIf="tache.etatTache.idEtat != 1" type="button" (click)="updateAfaire(tache.idTache)"
+                        class="btn btn-success"><i class="material-icons"></i>
+                        A faire</button>
+                    <button *ngIf="tache.etatTache.idEtat == 1" disabled="true" type="button"
+                        (click)="updateAfaire(tache.idTache)" class="btn btn-warning"><i class="material-icons"></i>
+                        A faire</button>
+                    <button *ngIf="tache.etatTache.idEtat != 2" type="button" (click)="updateEncours(tache.idTache)"
+                        class="btn btn-success"><i class="material-icons"></i>
+                        En cours</button>
+                    <button *ngIf="tache.etatTache.idEtat == 2" disabled="true" type="button"
+                        (click)="updateEncours(tache.idTache)" class="btn btn-warning"><i class="material-icons"></i>
+                        En cours</button>
+                    <button *ngIf="tache.etatTache.idEtat != 3" type="button" (click)="updateTermine(tache.idTache)"
+                        class="btn btn-success"><i class="material-icons"></i>
+                        Terminé</button>
+                    <button *ngIf="tache.etatTache.idEtat == 3" disabled="true" type="button"
+                        (click)="updateTermine(tache.idTache)" class="btn btn-warning"><i class="material-icons"></i>
+                        Terminé</button>
                 </td>
             </tr>
         </tbody>

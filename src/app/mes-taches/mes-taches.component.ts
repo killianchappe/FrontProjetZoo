@@ -31,19 +31,29 @@ export class MesTachesComponent implements OnInit {
     })
   }
 
-  updateEtat(idTache: number) {
+  updateAfaire(idTache: number) {
     for (let tache of this.listTaches) {
       if (idTache == tache.idTache) {
-        if (tache.etatTache.idEtat == 1) {
-          tache.etatTache = this.listEtats[1];
-          this.tacheService.setEtat(idTache, 2).subscribe();
-        } else if (tache.etatTache.idEtat == 2) {
-          tache.etatTache = this.listEtats[2];
-          this.tacheService.setEtat(idTache, 3).subscribe();
-        } else {
-          tache.etatTache = this.listEtats[0];
-          this.tacheService.setEtat(idTache, 1).subscribe();
-        }
+        tache.etatTache = this.listEtats[0];
+        this.tacheService.setEtat(idTache, 1).subscribe();
+      }
+    }
+  }
+
+  updateEncours(idTache: number) {
+    for (let tache of this.listTaches) {
+      if (idTache == tache.idTache) {
+        tache.etatTache = this.listEtats[1];
+        this.tacheService.setEtat(idTache, 2).subscribe();
+      }
+    }
+  }
+
+  updateTermine(idTache: number) {
+    for (let tache of this.listTaches) {
+      if (idTache == tache.idTache) {
+        tache.etatTache = this.listEtats[2];
+        this.tacheService.setEtat(idTache, 3).subscribe();
       }
     }
   }
