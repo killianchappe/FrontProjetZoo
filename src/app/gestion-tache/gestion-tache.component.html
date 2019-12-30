@@ -4,8 +4,20 @@
             <div class="nav-tabs-navigation">
                 <div class="nav-tabs-wrapper">
                     <ul class="nav nav-tabs" data-tabs="tabs">
+                        <li class="nav-item">
+                            <a class="nav-link active" href="#mon-planning" data-toggle="tab">
+                                <i class="material-icons">today</i> Mon planning
+                                <div class="ripple-container"></div>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#mes-taches" data-toggle="tab">
+                                <i class="material-icons">assignment</i> Mes Tâches
+                                <div class="ripple-container"></div>
+                            </a>
+                        </li>
                         <li *ngIf="isManager" class="nav-item">
-                            <a class="nav-link active" href="#table-tache" data-toggle="tab">
+                            <a class="nav-link" href="#table-tache" data-toggle="tab">
                                 <i class="material-icons">assignment</i> Liste des tâches
                                 <div class="ripple-container"></div>
                             </a>
@@ -17,20 +29,8 @@
                             </a>
                         </li>
                         <li *ngIf="isManager" class="nav-item">
-                            <a class="nav-link" href="#planning-employe" data-toggle="tab">
+                            <a class="nav-link" href="#planning-employes" data-toggle="tab">
                                 <i class="material-icons">today</i> Planning par employé
-                                <div class="ripple-container"></div>
-                            </a>
-                        </li>
-                        <li *ngIf="!isManager" class="nav-item">
-                            <a class="nav-link active" href="#planning-employe" data-toggle="tab">
-                                <i class="material-icons">today</i> Mon planning
-                                <div class="ripple-container"></div>
-                            </a>
-                        </li>
-                        <li *ngIf="!isManager" class="nav-item">
-                            <a class="nav-link" href="#mes-taches" data-toggle="tab">
-                                <i class="material-icons">assignment</i> Mes Tâches
                                 <div class="ripple-container"></div>
                             </a>
                         </li>
@@ -40,7 +40,25 @@
         </div>
         <div class="card-body myCard">
             <div class="tab-content myCard">
-                <div class="tab-pane active myCard" *ngIf="isManager" id="table-tache">
+                <div class="tab-pane myCard active" id="mon-planning">
+                    <div class="col-md-12 myCard">
+                        <div class="card">
+                            <div class="card-body myCard2">
+                                <app-calendrier></app-calendrier>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="tab-pane myCard" id="mes-taches">
+                    <div class="col-md-12 myCard">
+                        <div class="card">
+                            <div class="card-body myCard2">
+                                <app-mes-taches></app-mes-taches>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="tab-pane myCard" *ngIf="isManager" id="table-tache">
                     <div class="col-md-12 myCard">
                         <div class="card">
                             <div class="card-body myCard2">
@@ -157,23 +175,11 @@
                         </div>
                     </div>
                 </div>
-                <div *ngIf="isManager" class="tab-pane myCard" id="planning-employe">
-                    <h6>PLANNING PAR EMPLOYE A FAIRE</h6>
-                </div>
-                <div *ngIf="!isManager" class="tab-pane myCard active" id="planning-employe">
+                <div *ngIf="isManager" class="tab-pane myCard" id="planning-employes">
                     <div class="col-md-12 myCard">
                         <div class="card">
                             <div class="card-body myCard2">
-                                <app-calendrier></app-calendrier>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div *ngIf="!isManager" class="tab-pane myCard" id="mes-taches">
-                    <div class="col-md-12 myCard">
-                        <div class="card">
-                            <div class="card-body myCard2">
-                                <app-mes-taches></app-mes-taches>
+                                <app-calendrier-global></app-calendrier-global>
                             </div>
                         </div>
                     </div>

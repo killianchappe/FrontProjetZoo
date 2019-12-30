@@ -27,6 +27,7 @@ import { JwtModule } from '@auth0/angular-jwt';
 import { FullCalendarModule } from '@fullcalendar/angular';
 import { CalendrierComponent } from './calendrier/calendrier.component';
 import { MesTachesComponent } from './mes-taches/mes-taches.component';
+import { CalendrierGlobalComponent } from './calendrier-global/calendrier-global.component';
 
 @NgModule({
   declarations: [
@@ -52,6 +53,7 @@ import { MesTachesComponent } from './mes-taches/mes-taches.component';
     RegisterComponent,
     CalendrierComponent,
     MesTachesComponent,
+    CalendrierGlobalComponent,
   ],
   imports: [
     BrowserModule,

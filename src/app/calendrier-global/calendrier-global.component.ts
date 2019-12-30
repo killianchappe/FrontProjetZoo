@@ -9,11 +9,11 @@ import { TestRoleService } from '../services/test-role/test-role.service';
 import allLocales from '@fullcalendar/core/locales-all';
 
 @Component({
-  selector: 'app-calendrier',
-  templateUrl: './calendrier.component.html',
-  styleUrls: ['./calendrier.component.scss']
+  selector: 'app-calendrier-global',
+  templateUrl: './calendrier-global.component.html',
+  styleUrls: ['./calendrier-global.component.scss']
 })
-export class CalendrierComponent implements OnInit {
+export class CalendrierGlobalComponent implements OnInit {
 
   listTaches: Tache[] = [];
   calendarPlugins = [dayGridPlugin, timeGridPlugin, interactionPlugin];
@@ -26,12 +26,9 @@ export class CalendrierComponent implements OnInit {
   heureFin: number;
   debut: Date = new Date();
   fin: Date = new Date();
-  idSecure: number;
 
   constructor(private tacheService: TacheService,
-    private test: TestRoleService) {
-    this.idSecure = this.test.getValueIdCourant();
-  }
+    private test: TestRoleService) { }
 
   ngOnInit() {
     this.options = {
@@ -46,22 +43,20 @@ export class CalendrierComponent implements OnInit {
     this.tacheService.getAll().subscribe(data => {
       this.listTaches = data;
       for (let tache of this.listTaches) {
-        if (this.idSecure == tache.userTache.idUser) {
-          this.debut = new Date(tache.dateTache);
-          this.heureDebut = this.debut.getHours();
-          this.heureFin = this.heureDebut + tache.dureeTache;
-          this.fin = new Date(tache.dateTache);
-          this.fin.setHours(this.heureFin);
-          console.log(this.fin)
-          this.calendarEvents = this.calendarEvents.concat({
-            title: tache.libelleTache + " - " + tache.userTache.prenomUser + " "
-              + tache.userTache.nomUser + " - Commentaire : " + tache.commentaireTache + " - Durée estimée : "
-              + tache.dureeTache + " h - Etat : " + tache.etatTache.libelleEtat,
-            start: tache.dateTache,
-            end: this.fin,
-          });
-        };
-      }
+        this.debut = new Date(tache.dateTache);
+        this.heureDebut = this.debut.getHours();
+        this.heureFin = this.heureDebut + tache.dureeTache;
+        this.fin = new Date(tache.dateTache);
+        this.fin.setHours(this.heureFin);
+        console.log(this.fin)
+        this.calendarEvents = this.calendarEvents.concat({
+          title: tache.libelleTache + " - " + tache.userTache.prenomUser + " "
+            + tache.userTache.nomUser + " - Commentaire : " + tache.commentaireTache + " - Durée estimée : "
+            + tache.dureeTache + " h - Etat : " + tache.etatTache.libelleEtat,
+          start: tache.dateTache,
+          end: this.fin,
+        });
+      };
     });
   }
 
