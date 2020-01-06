@@ -4,6 +4,7 @@ import { TacheService } from '../services/tache/tache.service';
 import { TestRoleService } from '../services/test-role/test-role.service';
 import { Etat } from '../models/etat';
 import { EtatService } from '../services/etat/etat.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-mes-taches',
@@ -18,7 +19,8 @@ export class MesTachesComponent implements OnInit {
 
   constructor(private tacheService: TacheService,
     private test: TestRoleService,
-    private etatService: EtatService) {
+    private etatService: EtatService,
+    private router: Router) {
     this.idSecure = this.test.getValueIdCourant();
   }
 

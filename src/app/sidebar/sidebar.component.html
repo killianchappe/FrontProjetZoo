@@ -67,6 +67,12 @@
                     <p>Mon Compte</p>
                 </a>
             </li>
+            <li class="nav-item " [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}">
+                <a class="nav-link myA" (click)="logout()">
+                    <i class="material-icons">power_settings_new</i>
+                    <p>Deconnexion</p>
+                </a>
+            </li>
         </ul>
     </div>
 </div>

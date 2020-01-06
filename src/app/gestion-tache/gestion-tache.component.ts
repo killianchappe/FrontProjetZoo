@@ -95,5 +95,5 @@ export class GestionTacheComponent implements OnInit {
     })
   }
 
-
+  
 }

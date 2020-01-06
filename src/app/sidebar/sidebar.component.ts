@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { TestRoleService } from '../services/test-role/test-role.service';
 import { JwtHelperService } from '@auth0/angular-jwt';
+import Swal from "sweetalert2";
+import { AuthentificationService } from '../services/authentification/authentification.service';
 
 @Component({
   selector: 'app-sidebar',
@@ -15,7 +17,8 @@ export class SidebarComponent implements OnInit {
   idCompte: number;
   helper = new JwtHelperService();
 
-  constructor(private router: Router,
+  constructor(private authentificationService: AuthentificationService,
+    private router: Router,
     private test: TestRoleService) {
   }
 
@@ -26,6 +29,23 @@ export class SidebarComponent implements OnInit {
       this.idCompte = this.helper.decodeToken(localStorage.getItem('currentUser'))['idUser'];
     } catch (error) {
     }
+  }
+
+  logout() {
+    Swal.fire({
+      title: 'Voulez-vous vraiment vous déconnecter?',
+      icon: 'question',
+      showCancelButton: true,
+      showCloseButton: true,
+      focusConfirm: true,
+      confirmButtonText: 'Oui',
+      cancelButtonText: 'Non'
+    }).then((result) => {
+      if (result.value) {
+        this.authentificationService.logout();
+        this.router.navigate(['/signin']);
+      }
+    })
   }
 
 }
