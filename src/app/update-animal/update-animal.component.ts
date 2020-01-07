@@ -9,7 +9,6 @@ import { Nourriture } from "../models/nourriture";
 import { Animal } from "../models/animal";
 import { AnimalService } from '../services/animal/animal.service';
 import { TestRoleService } from '../services/test-role/test-role.service';
-import { runInThisContext } from 'vm';
 
 @Component({
   selector: 'app-update-animal',

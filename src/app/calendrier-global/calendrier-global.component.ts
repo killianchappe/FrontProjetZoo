@@ -10,6 +10,9 @@ import allLocales from '@fullcalendar/core/locales-all';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { User } from '../models/user';
 import { UserService } from '../services/user/user.service';
+import Swal from 'sweetalert2';
+import { EtatService } from '../services/etat/etat.service';
+import { Etat } from '../models/etat';
 
 @Component({
   selector: 'app-calendrier-global',
@@ -30,16 +33,31 @@ export class CalendrierGlobalComponent implements OnInit {
   idEmploye: number;
   myForm: FormGroup;
   listEmployes: User[] = [];
+  newTache2: Tache = new Tache();
+  myFormTache2: FormGroup;
+  listEtats: Etat[] = [];
+  showModal: Boolean = false;
 
   constructor(private tacheService: TacheService,
     private test: TestRoleService,
     private formBuilder: FormBuilder,
-    private userService: UserService) {
+    private userService: UserService,
+    private etatService: EtatService) {
     this.userService.getAll().subscribe(data => {
       this.listEmployes = data;
     });
+    this.etatService.getAll().subscribe(data => {
+      this.listEtats = data;
+    });
     this.myForm = this.formBuilder.group({
       idEmploye: ['', Validators.required],
+    });
+    this.myFormTache2 = this.formBuilder.group({
+      libelleTache2: ['', Validators.required],
+      commentaireTache2: ['', Validators.required],
+      dateTache2: ['', Validators.required],
+      dureeTache2: ['', Validators.required],
+      userTache2: ['', Validators.required],
     });
   }
 
@@ -75,6 +93,41 @@ export class CalendrierGlobalComponent implements OnInit {
         };
       };
     });
+  }
+
+  ajoutTache2() {
+    this.newTache2.etatTache = this.listEtats[0];
+    this.tacheService.addTache(this.newTache2).subscribe(res => {
+      if (res) {
+        Swal.fire({
+          title: 'Tâche ajoutée!',
+          icon: 'success',
+          focusConfirm: true,
+          confirmButtonText: 'OK',
+        }).then((result) => {
+          if (result.value) {
+            this.ngOnInit();
+          }
+        })
+      }
+    });
+  }
+
+  handleDateClick() {
+    this.newTache2.libelleTache = null;
+    this.newTache2.commentaireTache = null;
+    this.newTache2.dureeTache = null;
+    this.newTache2.dateTache = null;
+    for (let employe of this.listEmployes) {
+      if (employe.idUser == this.idEmploye) {
+        this.newTache2.userTache = employe;
+      }
+    }
+    this.showModal = true;
+  }
+
+  closeModal() {
+    this.showModal = false;
   }
 
 }
