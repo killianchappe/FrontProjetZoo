@@ -40,7 +40,7 @@
                     [events]="calendarEvents" [allDaySlot]="options.allDaySlot" [slotEventOverlap]="false"
                     [minTime]="options.minTime" [maxTime]="options.maxTime" [weekends]="options.weekends"
                     [eventColor]="options.eventColor" [locales]="options.locales" [locale]="options.locale"
-                    (dateClick)="handleDateClick($event)">
+                    (dateClick)="handleDateClick($event)" [timeZone]="options.timeZone">
                 </full-calendar>
             </div>
         </div>

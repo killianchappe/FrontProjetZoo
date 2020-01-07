@@ -70,6 +70,7 @@ export class CalendrierGlobalComponent implements OnInit {
       allDaySlot: false,
       locales: allLocales,
       locale: 'fr',
+      timeZone: 'UTC-1',
     };
     while (this.calendarEvents.length != 0) {
       this.calendarEvents.shift();

@@ -42,6 +42,7 @@ export class CalendrierComponent implements OnInit {
       allDaySlot: false,
       locales: allLocales,
       locale: 'fr',
+      timeZone: 'UTC-1',
     };
     this.tacheService.getAll().subscribe(data => {
       this.listTaches = data;
